@@ -31,15 +31,18 @@
                     <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard
                 </a>
                 <a href="#keuangan" class="px-3 py-2 rounded-lg hover:bg-blue-800/60 text-blue-100 hover:text-white transition-all flex items-center gap-1.5">
-                    <i data-lucide="wallet" class="w-4 h-4"></i> Laporan Keuangan
+                    <i data-lucide="wallet" class="w-4 h-4"></i> Keuangan
                 </a>
                 <a href="#fasilitas" class="px-3 py-2 rounded-lg hover:bg-blue-800/60 text-blue-100 hover:text-white transition-all flex items-center gap-1.5">
-                    <i data-lucide="calendar-check" class="w-4 h-4"></i> Sewa Fasilitas
+                    <i data-lucide="box" class="w-4 h-4"></i> Fasilitas & Lapangan
                 </a>
-                <button onclick="openAspirasiModal()" class="px-3 py-2 rounded-lg hover:bg-amber-500/20 text-amber-300 hover:text-amber-200 transition-all flex items-center gap-1.5 border border-amber-400/30">
-                    <i data-lucide="message-square-plus" class="w-4 h-4"></i> Aduan Warga
+                <a href="#karang-taruna" class="px-3 py-2 rounded-lg hover:bg-blue-800/60 text-blue-100 hover:text-white transition-all flex items-center gap-1.5">
+                    <i data-lucide="users-round" class="w-4 h-4"></i> Karang Taruna
+                </a>
+                <button onclick="openAspirasiModal()" class="px-3 py-2 rounded-lg hover:bg-blue-800/60 text-blue-100 hover:text-white transition-all flex items-center gap-1.5">
+                    <i data-lucide="message-square" class="w-4 h-4"></i> Aspirasi
                 </button>
-                <button onclick="openAdminModal()" class="ml-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 px-4 py-2 rounded-lg font-bold shadow-md transition-all flex items-center gap-2">
+                <button onclick="openAdminModal()" class="ml-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 px-4 py-2 rounded-lg font-bold shadow-md hover:shadow-amber-500/20 transition-all flex items-center gap-2">
                     <i data-lucide="shield-check" class="w-4 h-4"></i> Area Pengurus
                 </button>
             </div>
@@ -56,322 +59,362 @@
                 <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard
             </a>
             <a href="#keuangan" class="mobile-link block px-3 py-2 rounded-lg hover:bg-blue-800 text-blue-100 flex items-center gap-2">
-                <i data-lucide="wallet" class="w-4 h-4"></i> Laporan Keuangan
+                <i data-lucide="wallet" class="w-4 h-4"></i> Keuangan RT
             </a>
             <a href="#fasilitas" class="mobile-link block px-3 py-2 rounded-lg hover:bg-blue-800 text-blue-100 flex items-center gap-2">
-                <i data-lucide="calendar-check" class="w-4 h-4"></i> Sewa Fasilitas
+                <i data-lucide="box" class="w-4 h-4"></i> Fasilitas & Lapangan
             </a>
-            <button onclick="openAspirasiModal(); closeMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg bg-amber-500/20 text-amber-300 flex items-center gap-2">
-                <i data-lucide="message-square-plus" class="w-4 h-4"></i> Aduan Warga
+            <a href="#karang-taruna" class="mobile-link block px-3 py-2 rounded-lg hover:bg-blue-800 text-blue-100 flex items-center gap-2">
+                <i data-lucide="users-round" class="w-4 h-4"></i> Karang Taruna
+            </a>
+            <button onclick="openAspirasiModal(); closeMobileMenu();" class="w-full text-left px-3 py-2 rounded-lg hover:bg-blue-800 text-blue-100 flex items-center gap-2">
+                <i data-lucide="message-square" class="w-4 h-4"></i> Aspirasi Warga
             </button>
-            <button onclick="openAdminModal(); closeMobileMenu();" class="w-full text-center bg-amber-400 text-slate-950 px-4 py-2 rounded-lg font-bold mt-2 shadow flex items-center justify-center gap-2">
+            <button onclick="openAdminModal(); closeMobileMenu();" class="w-full text-center bg-amber-400 hover:bg-amber-500 text-slate-950 px-4 py-2 rounded-lg font-bold mt-2 shadow flex items-center justify-center gap-2">
                 <i data-lucide="shield-check" class="w-4 h-4"></i> Area Pengurus
             </button>
         </div>
     </nav>
 
     <!-- Hero Banner -->
-    <header id="hero" class="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-950 text-white py-14 md:py-18">
+    <header id="hero" class="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-950 text-white py-14 md:py-20">
         <div class="container mx-auto px-4 relative z-10 text-center max-w-3xl">
-            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-200 border border-blue-400/30 mb-4 backdrop-blur-sm">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-200 border border-blue-400/30 mb-5 backdrop-blur-sm">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 Sistem Informasi Digital RT 006
             </span>
             <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
-                Portal Informasi & Keuangan <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-sky-300 to-amber-300">RT 006 Vila Permata</span>
+                Selamat Datang di Portal Warga <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-sky-300 to-amber-300">RT 006 Vila Permata</span>
             </h2>
-            <p class="mt-3 text-sm md:text-base text-blue-100/90 leading-relaxed">
-                Transparansi Kas RT, Layanan Booking Fasilitas / SOR, dan Layanan Aduan Warga Terintegrasi.
+            <p class="mt-4 text-base md:text-lg text-blue-100/90 leading-relaxed">
+                Pusat informasi transparan, pengelolaan keuangan real-time, dan peminjaman fasilitas lingkungan.
             </p>
             <div class="mt-6 flex flex-wrap justify-center gap-3">
-                <button onclick="openSewaModal('Sarana Olahraga / Lapangan')" class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2.5 rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm">
-                    <i data-lucide="calendar" class="w-4 h-4"></i> Pesan Lapangan / Fasilitas
+                <button onclick="openFasilitasModal('Lapangan Olahraga')" class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2.5 rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm">
+                    <i data-lucide="calendar" class="w-4 h-4"></i> Pesan Lapangan Olahraga
                 </button>
                 <button onclick="openAspirasiModal()" class="bg-amber-400 hover:bg-amber-500 text-slate-950 px-5 py-2.5 rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm">
-                    <i data-lucide="message-square-plus" class="w-4 h-4"></i> Kirim Aduan Warga
+                    <i data-lucide="send" class="w-4 h-4"></i> Kirim Aspirasi / Laporan
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- SECTION LAPORAN KEUANGAN UTAMA -->
-    <section id="keuangan" class="container mx-auto my-10 px-4 scroll-mt-20">
+    <!-- Dashboard Statistik Utama & Demografi Warga -->
+    <section id="dashboard" class="container mx-auto my-10 px-4 scroll-mt-20">
         <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
             <div>
-                <h3 class="text-2xl font-bold text-slate-800">📊 Laporan Keuangan RT 006</h3>
-                <p class="text-sm text-slate-500">Klik pada salah satu kartu di bawah untuk membuka rincian pos akun transaksi</p>
+                <h3 class="text-2xl font-bold text-slate-800">Ringkasan Data Warga</h3>
+                <p class="text-sm text-slate-500">Informasi demografi warga terdaftar RT 006 / RW 050</p>
             </div>
-            <span class="text-xs bg-emerald-100 text-emerald-700 font-semibold px-3 py-1 rounded-full w-fit flex items-center gap-1">
-                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i> Transparan & Audited
+            <span class="text-xs bg-blue-100 text-blue-700 font-semibold px-3 py-1 rounded-full w-fit flex items-center gap-1">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> Terverifikasi Sekretariat
             </span>
         </div>
 
-        <!-- 3 Kartu Keuangan Utama -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <!-- A. Uang Masuk -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-200 hover:border-emerald-500 hover:shadow-md transition-all cursor-pointer group" onclick="openKeuanganModal('uang-masuk')">
-                <div class="flex items-center justify-between mb-3">
-                    <span class="text-slate-500 text-sm font-semibold group-hover:text-emerald-600 transition-colors">A. Total Uang Masuk</span>
-                    <div class="p-3 bg-emerald-50 text-emerald-600 rounded-xl group-hover:scale-110 transition-transform">
-                        <i data-lucide="arrow-down-left" class="w-6 h-6"></i>
-                    </div>
+        <!-- Metric Cards Demografi Warga -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+            <!-- Total Warga Terdata -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 hover:border-blue-400 transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-500 text-sm font-medium">Total Warga Terdata</span>
+                    <div class="p-2 bg-blue-50 text-blue-600 rounded-xl"><i data-lucide="users" class="w-5 h-5"></i></div>
                 </div>
-                <p class="text-3xl font-extrabold text-emerald-600 mb-1">Rp 12.450.000</p>
-                <p class="text-xs text-slate-400">10 Akun Penerimaan Kas</p>
-                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-emerald-600">
-                    <span>Lihat Rincian Akun Masuk</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <div class="flex items-baseline gap-2">
+                    <p class="text-3xl font-extrabold text-slate-900">214</p>
+                    <span class="text-xs font-semibold text-emerald-600 flex items-center">Jiwa</span>
                 </div>
+                <p class="text-xs text-slate-400 mt-2">Mencakup Warga Tetap & Domisili</p>
             </div>
 
-            <!-- B. Uang Keluar -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-200 hover:border-rose-500 hover:shadow-md transition-all cursor-pointer group" onclick="openKeuanganModal('uang-keluar')">
-                <div class="flex items-center justify-between mb-3">
-                    <span class="text-slate-500 text-sm font-semibold group-hover:text-rose-600 transition-colors">B. Total Uang Keluar</span>
-                    <div class="p-3 bg-rose-50 text-rose-600 rounded-xl group-hover:scale-110 transition-transform">
-                        <i data-lucide="arrow-up-right" class="w-6 h-6"></i>
-                    </div>
+            <!-- Status Ngontrak/Sewa -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 hover:border-emerald-400 transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-500 text-sm font-medium">Status Ngontrak / Sewa</span>
+                    <div class="p-2 bg-emerald-50 text-emerald-600 rounded-xl"><i data-lucide="home" class="w-5 h-5"></i></div>
                 </div>
-                <p class="text-3xl font-extrabold text-rose-600 mb-1">Rp 7.820.000</p>
-                <p class="text-xs text-slate-400">16 Akun Pengeluaran & Operasional</p>
-                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-rose-600">
-                    <span>Lihat Rincian Akun Keluar</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <div class="flex items-baseline gap-2">
+                    <p class="text-3xl font-extrabold text-slate-900">14</p>
+                    <span class="text-xs font-semibold text-slate-500">KK</span>
                 </div>
+                <p class="text-xs text-slate-400 mt-2">Tercatat di data pengurus RT</p>
             </div>
 
-            <!-- C. Saldo Terkini -->
-            <div class="bg-gradient-to-br from-blue-900 to-indigo-900 text-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all cursor-pointer group" onclick="openKeuanganModal('saldo-terkini')">
-                <div class="flex items-center justify-between mb-3">
-                    <span class="text-blue-200 text-sm font-semibold">C. Saldo Terkini Kas RT</span>
-                    <div class="p-3 bg-white/10 text-amber-300 rounded-xl group-hover:scale-110 transition-transform">
-                        <i data-lucide="wallet" class="w-6 h-6"></i>
-                    </div>
+            <!-- Program Kerja RT -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 hover:border-amber-400 transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-500 text-sm font-medium">Program Kerja Lingkungan</span>
+                    <div class="p-2 bg-amber-50 text-amber-600 rounded-xl"><i data-lucide="activity" class="w-5 h-5"></i></div>
                 </div>
-                <p class="text-3xl font-extrabold text-amber-300 mb-1">Rp 4.630.000</p>
-                <p class="text-xs text-blue-200">Selisih Kas Bersih Tersedia</p>
-                <div class="mt-4 pt-3 border-t border-blue-800/80 flex items-center justify-between text-xs font-bold text-amber-300">
-                    <span>Lihat Ringkasan Rekonsiliasi</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                <div class="flex items-baseline gap-2">
+                    <p class="text-2xl font-extrabold text-amber-600">Aktif Berjalan</p>
+                </div>
+                <p class="text-xs text-slate-400 mt-2">Gotong royong & keamanan lingkungan</p>
+            </div>
+        </div>
+
+        <!-- Keuangan RT Real-Time -->
+        <div id="keuangan" class="scroll-mt-20">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-800">Laporan Keuangan RT</h3>
+                    <p class="text-sm text-slate-500">Ringkasan kas terintegrasi real-time dari Google Spreadsheet masterdata</p>
+                </div>
+                <button onclick="openAdminModal()" class="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 w-fit bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200">
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i> Buka Spreadsheet Kas Full
+                </button>
+            </div>
+
+            <!-- 3 Akun Keuangan Utama -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+                <!-- 1. Uang Masuk -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-200/80 hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-slate-600 text-sm font-semibold">Total Uang Masuk</span>
+                        <div class="p-2.5 bg-emerald-100 text-emerald-700 rounded-xl"><i data-lucide="arrow-down-left" class="w-6 h-6"></i></div>
+                    </div>
+                    <p class="text-3xl font-extrabold text-emerald-600">Rp 12.450.000</p>
+                    <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+                        <i data-lucide="refresh-cw" class="w-3 h-3 text-emerald-500"></i> Update Otomatis via Spreadsheet
+                    </p>
+                </div>
+
+                <!-- 2. Uang Keluar -->
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-rose-200/80 hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-slate-600 text-sm font-semibold">Total Uang Keluar</span>
+                        <div class="p-2.5 bg-rose-100 text-rose-700 rounded-xl"><i data-lucide="arrow-up-right" class="w-6 h-6"></i></div>
+                    </div>
+                    <p class="text-3xl font-extrabold text-rose-600">Rp 4.120.000</p>
+                    <p class="text-xs text-slate-400 mt-2 flex items-center gap-1">
+                        <i data-lucide="refresh-cw" class="w-3 h-3 text-rose-500"></i> Pengeluaran Operasional & Fasum
+                    </p>
+                </div>
+
+                <!-- 3. Saldo Terkini -->
+                <div class="bg-gradient-to-br from-blue-900 to-indigo-900 text-white p-6 rounded-2xl shadow-md hover:shadow-lg transition-all">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-blue-200 text-sm font-semibold">Saldo Terkini Kas RT</span>
+                        <div class="p-2.5 bg-white/20 text-white rounded-xl"><i data-lucide="wallet" class="w-6 h-6"></i></div>
+                    </div>
+                    <p class="text-3xl font-extrabold text-amber-300">Rp 8.330.000</p>
+                    <p class="text-xs text-blue-200 mt-2 flex items-center gap-1">
+                        <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i> Balance & Akurat
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pengumuman & Agenda -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80">
+            <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                <i data-lucide="bell" class="w-5 h-5 text-blue-600"></i>
+                <h4 class="font-bold text-slate-800 text-lg">Informasi & Agenda Pengurus RT</h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/60">
+                    <span class="text-xs font-bold text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Kegiatan Rutin</span>
+                    <h5 class="font-bold text-slate-800 mt-2">Gotong Royong & Kerja Bakti Kebersihan</h5>
+                    <p class="text-xs text-slate-500 mt-1">Minggu Pertama Bulan Ini • Pukul 07.00 WIB - Selesai</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/60">
+                    <span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-2.5 py-1 rounded-md">Informasi Iuran</span>
+                    <h5 class="font-bold text-slate-800 mt-2">Penarikan Iuran Bulanan Kebersihan & Keamanan</h5>
+                    <p class="text-xs text-slate-500 mt-1">Petugas RT akan berkunjung mulai tanggal 1 s/d 10 setiap bulan.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION SEWA FASILITAS & SARANA OLAHRAGA (SOR) -->
+    <!-- Section Inventaris & Fasilitas (Termasuk Lapangan Olahraga) -->
     <section id="fasilitas" class="container mx-auto my-10 px-4 scroll-mt-20">
         <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200/80">
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
                 <div class="flex items-center gap-3">
-                    <div class="p-3 bg-emerald-100 text-emerald-700 rounded-xl">
-                        <i data-lucide="volleyball" class="w-6 h-6"></i>
-                    </div>
+                    <div class="p-3 bg-emerald-100 text-emerald-700 rounded-xl"><i data-lucide="box" class="w-6 h-6"></i></div>
                     <div>
-                        <h3 class="text-xl font-bold text-slate-800">Sewa Fasilitas & Sarana Olahraga (SOR)</h3>
-                        <p class="text-sm text-slate-500">Pemesanan peralatan inventaris & lapangan terintegrasi WhatsApp pengelola</p>
+                        <h3 class="text-xl font-bold text-slate-800">Inventaris, Fasilitas & Lapangan Olahraga</h3>
+                        <p class="text-sm text-slate-500">Pemesanan fasilitas terintegrasi WhatsApp: 085111302077</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Grid Item Fasilitas -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                <!-- item 1 -->
-                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+            <!-- List Fasilitas -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- 1. Lapangan Olahraga -->
+                <div class="p-5 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <h5 class="font-bold text-slate-800 text-base">Lapangan Olahraga / SOR</h5>
-                            <span class="text-[10px] bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">Siap Pakai</span>
+                        <div class="w-10 h-10 bg-emerald-600 text-white rounded-xl flex items-center justify-center mb-3">
+                            <i data-lucide="trophy" class="w-5 h-5"></i>
                         </div>
-                        <p class="text-xs text-slate-500 mb-4">Pemesanan jadwal pemakaian lapangan badminton / futsal / voli warga RT 006.</p>
+                        <h5 class="font-bold text-slate-800 text-base">Lapangan Olahraga</h5>
+                        <p class="text-xs text-slate-500 mt-1">Badminton, Voli, & Kegiatan Warga</p>
                     </div>
-                    <button onclick="openSewaModal('Lapangan Olahraga / SOR')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all">
-                        <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Pesan Jadwal SOR
+                    <button onclick="openFasilitasModal('Lapangan Olahraga')" class="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 rounded-xl text-xs transition-all flex items-center justify-center gap-1">
+                        <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Pesan Lapangan
                     </button>
                 </div>
 
-                <!-- item 2 -->
+                <!-- 2. Meja Lipat -->
                 <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <h5 class="font-bold text-slate-800 text-base">Sewa Tenda / Tarup</h5>
-                            <span class="text-[10px] bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-bold">2 Set</span>
+                        <div class="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center mb-3">
+                            <i data-lucide="table" class="w-5 h-5"></i>
                         </div>
-                        <p class="text-xs text-slate-500 mb-4">Peminjaman tenda hajatan/acara keluarga khusus warga lingkungan.</p>
+                        <h5 class="font-bold text-slate-800 text-base">Meja Lipat</h5>
+                        <p class="text-xs text-slate-500 mt-1">10 Unit (Kondisi Baik)</p>
                     </div>
-                    <button onclick="openSewaModal('Sewa Tenda / Tarup')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all">
-                        <i data-lucide="box" class="w-3.5 h-3.5"></i> Ajukan Peminjaman
+                    <button onclick="openFasilitasModal('Meja Lipat')" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-xs transition-all flex items-center justify-center gap-1">
+                        <i data-lucide="box" class="w-3.5 h-3.5"></i> Pinjam Meja
                     </button>
                 </div>
 
-                <!-- item 3 -->
+                <!-- 3. Kursi Plastik -->
                 <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between mb-2">
-                            <h5 class="font-bold text-slate-800 text-base">Sewa Peralatan Masak</h5>
-                            <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold">Lengkap</span>
+                        <div class="w-10 h-10 bg-indigo-600 text-white rounded-xl flex items-center justify-center mb-3">
+                            <i data-lucide="armchair" class="w-5 h-5"></i>
                         </div>
-                        <p class="text-xs text-slate-500 mb-4">Peralatan masak besar, kompor, dan perlengkapan konsumsi warga.</p>
+                        <h5 class="font-bold text-slate-800 text-base">Kursi Plastik</h5>
+                        <p class="text-xs text-slate-500 mt-1">30 Unit (Siap Pakai)</p>
                     </div>
-                    <button onclick="openSewaModal('Sewa Peralatan Masak')" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-all">
-                        <i data-lucide="utensils" class="w-3.5 h-3.5"></i> Ajukan Peminjaman
+                    <button onclick="openFasilitasModal('Kursi Plastik')" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-xl text-xs transition-all flex items-center justify-center gap-1">
+                        <i data-lucide="box" class="w-3.5 h-3.5"></i> Pinjam Kursi
+                    </button>
+                </div>
+
+                <!-- 4. Tenda & Tarup -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-amber-600 text-white rounded-xl flex items-center justify-center mb-3">
+                            <i data-lucide="tent" class="w-5 h-5"></i>
+                        </div>
+                        <h5 class="font-bold text-slate-800 text-base">Tenda & Tarup</h5>
+                        <p class="text-xs text-slate-500 mt-1">2 Set Ukuran Standar</p>
+                    </div>
+                    <button onclick="openFasilitasModal('Tenda & Tarup')" class="mt-4 w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-2 rounded-xl text-xs transition-all flex items-center justify-center gap-1">
+                        <i data-lucide="box" class="w-3.5 h-3.5"></i> Pinjam Tenda
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MODAL DETAIL KEUANGAN (AKUN UANG MASUK & KELUAR) -->
-    <div id="keuanganModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
-        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative my-8">
-            <button onclick="closeKeuanganModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
-
-            <!-- Content Uang Masuk -->
-            <div id="contentUangMasuk" class="hidden">
-                <div class="flex items-center gap-3 mb-4 pb-3 border-b border-slate-100">
-                    <div class="p-2.5 bg-emerald-100 text-emerald-700 rounded-xl"><i data-lucide="arrow-down-left" class="w-6 h-6"></i></div>
-                    <div>
-                        <h4 class="text-xl font-bold text-slate-800">Akun Uang Masuk RT 006</h4>
-                        <p class="text-xs text-slate-500">Rincian 10 pos penerimaan kas & pendapatan RT</p>
-                    </div>
-                </div>
-                <div class="space-y-2 max-h-[60vh] overflow-y-auto pr-1">
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">1. Iuran Bulanan Warga (Rp 30.000/KK)</span><span class="text-xs font-bold text-emerald-600">Rutin Bulanan</span></div>
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">2. Jimpitan Ronda</span><span class="text-xs font-bold text-emerald-600">Rutin Harian</span></div>
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">3. Denda Ronda (Tdk Ronda 1 Bulan)</span><span class="text-xs font-bold text-slate-500">Kondisional</span></div>
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">4. Fee Internet</span><span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-bold text-[10px]">Rancangan</span></div>
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">5. Donatur</span><span class="text-xs font-bold text-slate-500">Sukarela</span></div>
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">6. Hibah</span><span class="text-xs font-bold text-slate-500">Kondisional</span></div>
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">7. Warga Baru Pindahan</span><span class="text-xs font-bold text-slate-500">Administrasi</span></div>
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">8. Sewa Tenda</span><span class="text-xs font-bold text-teal-600">Aset RT</span></div>
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">9. Sewa Peralatan Masak</span><span class="text-xs font-bold text-teal-600">Aset RT</span></div>
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">10. Proposal Kegiatan</span><span class="text-xs font-bold text-slate-500">Insidental</span></div>
+    <!-- Section Karang Taruna -->
+    <section id="karang-taruna" class="container mx-auto my-10 px-4 scroll-mt-20">
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200/80">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="p-3 bg-blue-100 text-blue-700 rounded-xl"><i data-lucide="users-round" class="w-6 h-6"></i></div>
+                <div>
+                    <h3 class="text-xl font-bold text-slate-800">Karang Taruna RT 006</h3>
+                    <p class="text-sm text-slate-500">Wadah pemuda & pemudi lingkungan Vila Permata</p>
                 </div>
             </div>
-
-            <!-- Content Uang Keluar -->
-            <div id="contentUangKeluar" class="hidden">
-                <div class="flex items-center gap-3 mb-4 pb-3 border-b border-slate-100">
-                    <div class="p-2.5 bg-rose-100 text-rose-700 rounded-xl"><i data-lucide="arrow-up-right" class="w-6 h-6"></i></div>
-                    <div>
-                        <h4 class="text-xl font-bold text-slate-800">Akun Uang Keluar RT 006</h4>
-                        <p class="text-xs text-slate-500">Rincian 16 pos pengeluaran & operasional lingkungan</p>
-                    </div>
-                </div>
-                <div class="space-y-2 max-h-[60vh] overflow-y-auto pr-1">
-                    <div class="p-2.5 bg-rose-50/50 rounded-xl border border-rose-100 flex justify-between items-center"><span class="text-sm font-medium">1. Sampah / Kebersihan</span><span class="text-xs font-bold text-rose-600">Rutin</span></div>
-                    <div class="p-2.5 bg-rose-50/50 rounded-xl border border-rose-100 flex justify-between items-center"><span class="text-sm font-medium">2. Keamanan / Satpam</span><span class="text-xs font-bold text-rose-600">Rutin</span></div>
-                    <div class="p-2.5 bg-rose-50/50 rounded-xl border border-rose-100 flex justify-between items-center"><span class="text-sm font-medium">3. Setor Kas RW</span><span class="text-xs font-bold text-rose-600">Rutin</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">4. Kas RT</span><span class="text-xs font-bold text-slate-500">Operasional</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">5. Perbaikan Peralatan Inventaris</span><span class="text-xs font-bold text-slate-400">Tentatif</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">6. Penerangan Jalan / Fasos / Fasum</span><span class="text-xs font-bold text-slate-400">Tentatif</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">7. Perbaikan Pos Ronda RT 006</span><span class="text-xs font-bold text-slate-400">Tentatif</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">8. Perbaikan Kantor Sekretariat RT 006</span><span class="text-xs font-bold text-slate-400">Tentatif</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">9. Dana Sosial (Sakit / Meninggal)</span><span class="text-xs font-bold text-slate-400">Tentatif</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">10. Kerja Bakti Warga</span><span class="text-xs font-bold text-slate-400">Tentatif</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">11. Perbaikan Tempat Fasos / Fasum</span><span class="text-xs font-bold text-slate-400">Tentatif</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">12. Perbaikan Portal Lingkungan</span><span class="text-xs font-bold text-slate-400">Tentatif</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">13. Perbaikan Sarana Olahraga (SOR)</span><span class="text-xs font-bold text-slate-400">Tentatif</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">14. Kegiatan Rapat Pengurus</span><span class="text-xs font-bold text-slate-400">Tentatif</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">15. Kegiatan Rapat Warga</span><span class="text-xs font-bold text-slate-400">Tentatif</span></div>
-                    <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex justify-between items-center"><span class="text-sm font-medium">16. Event-Event Pertemuan / PHBN</span><span class="text-xs font-bold text-slate-400">Tentatif</span></div>
-                </div>
-            </div>
-
-            <!-- Content Saldo Terkini -->
-            <div id="contentSaldoTerkini" class="hidden">
-                <div class="flex items-center gap-3 mb-4 pb-3 border-b border-slate-100">
-                    <div class="p-2.5 bg-blue-100 text-blue-700 rounded-xl"><i data-lucide="wallet" class="w-6 h-6"></i></div>
-                    <div>
-                        <h4 class="text-xl font-bold text-slate-800">Saldo Terkini Kas RT 006</h4>
-                        <p class="text-xs text-slate-500">Ringkasan rekonsiliasi penerimaan dan pengeluaran</p>
-                    </div>
-                </div>
-                <div class="p-5 bg-blue-50 rounded-2xl border border-blue-200 space-y-3">
-                    <div class="flex justify-between text-sm"><span class="text-slate-600">Total Akumulasi Uang Masuk:</span><span class="font-bold text-emerald-600">Rp 12.450.000</span></div>
-                    <div class="flex justify-between text-sm"><span class="text-slate-600">Total Akumulasi Uang Keluar:</span><span class="font-bold text-rose-600">- Rp 7.820.000</span></div>
-                    <div class="pt-3 border-t border-blue-200 flex justify-between text-base font-extrabold"><span class="text-slate-800">Sisa Saldo Kas Kasih:</span><span class="text-blue-700">Rp 4.630.000</span></div>
-                </div>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                Karang Taruna aktif mendukung kegiatan kemasyarakatan, olahraga, peringatan hari besar nasional, serta kegiatan sosial warga RT 006.
+            </p>
+            <div class="inline-flex items-center gap-2 text-xs font-semibold text-blue-700 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200">
+                <i data-lucide="sparkles" class="w-4 h-4"></i> Kegiatan Olahraga & Pemuda Aktif
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- MODAL FORM PEMESANAN FASILITAS / SOR (Terintegrasi WA: 6285111302077) -->
-    <div id="sewaModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
-            <button onclick="closeSewaModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
-            <div class="flex items-center gap-3 mb-4">
-                <div class="p-3 bg-emerald-100 text-emerald-700 rounded-xl"><i data-lucide="calendar-check" class="w-6 h-6"></i></div>
+    <!-- Modal Form Pemesanan Fasilitas & Lapangan (WA: 6285111302077) -->
+    <div id="fasilitasModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
+            <button onclick="closeFasilitasModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-5">
+                <div class="p-3 bg-emerald-100 text-emerald-700 rounded-xl">
+                    <i data-lucide="calendar" class="w-6 h-6"></i>
+                </div>
                 <div>
-                    <h4 class="text-lg font-bold text-slate-800">Pemesanan Fasilitas / SOR</h4>
-                    <p class="text-xs text-slate-500">Terhubung langsung ke Pengelola (085111302077)</p>
+                    <h4 class="text-xl font-bold text-slate-800">Pesan Fasilitas / Lapangan</h4>
+                    <p class="text-xs text-slate-500">Terhubung langsung ke Pengurus Fasum (WA: 085111302077)</p>
                 </div>
             </div>
-            <form onsubmit="submitSewa(event)" class="space-y-3">
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Item Fasilitas</label>
-                    <input type="text" id="sewaItem" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-bold bg-slate-100" readonly>
-                </div>
+
+            <form id="formFasilitas" onsubmit="submitFasilitas(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Nama Pemesan</label>
-                    <input type="text" id="sewaNama" placeholder="Nama Lengkap Warga" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-emerald-400 focus:outline-none" required>
+                    <input type="text" id="namaPemesan" placeholder="Contoh: Pak Ahmad" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-400 focus:outline-none text-sm" required>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Blok / No. Rumah</label>
-                    <input type="text" id="sewaBlok" placeholder="Contoh: Blok B No. 8" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-emerald-400 focus:outline-none" required>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">No. Rumah / Blok</label>
+                    <input type="text" id="blokPemesan" placeholder="Contoh: Blok C No. 5" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-400 focus:outline-none text-sm" required>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Tanggal Pemakaian</label>
-                    <input type="date" id="sewaTanggal" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-emerald-400 focus:outline-none" required>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Fasilitas yang Dipesan</label>
+                    <select id="jenisFasilitas" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-400 focus:outline-none text-sm bg-white" required>
+                        <option value="Lapangan Olahraga">Lapangan Olahraga (Badminton/Voli)</option>
+                        <option value="Meja Lipat">Meja Lipat</option>
+                        <option value="Kursi Plastik">Kursi Plastik</option>
+                        <option value="Tenda & Tarup">Tenda & Tarup</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Tanggal Penggunaan</label>
+                        <input type="date" id="tglPakai" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-400 focus:outline-none text-sm" required>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Jam / Durasi</label>
+                        <input type="text" id="jamPakai" placeholder="Contoh: 16.00 - 18.00 WIB" class="w-full px-3 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-400 focus:outline-none text-sm" required>
+                    </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Catatan Tambahan / Jam Pemakaian</label>
-                    <textarea id="sewaCatatan" rows="2" placeholder="Contoh: Pemakaian Lapangan Jam 16.00 - 18.00 WIB" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-emerald-400 focus:outline-none"></textarea>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Catatan Tambahan / Keperluan</label>
+                    <textarea id="catatanFasilitas" rows="2" placeholder="Tuliskan keperluan acara..." class="w-full px-4 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-400 focus:outline-none text-sm"></textarea>
                 </div>
-                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl shadow transition-all flex items-center justify-center gap-2 text-sm mt-2">
+                <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow transition-all flex items-center justify-center gap-2 text-sm">
                     <i data-lucide="send" class="w-4 h-4"></i> Kirim Pesanan via WhatsApp
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- MODAL ADUAN WARGA (Terintegrasi WA: 628128077166) -->
-    <div id="aspirasiModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <!-- Modal Form Aspirasi Warga (WA: 628128077166) -->
+    <div id="aspirasiModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
         <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
-            <button onclick="closeAspirasiModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
-            <div class="flex items-center gap-3 mb-4">
-                <div class="p-3 bg-amber-100 text-amber-700 rounded-xl"><i data-lucide="message-square-plus" class="w-6 h-6"></i></div>
+            <button onclick="closeAspirasiModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="flex items-center gap-3 mb-5">
+                <div class="p-3 bg-amber-100 text-amber-700 rounded-xl">
+                    <i data-lucide="message-square-plus" class="w-6 h-6"></i>
+                </div>
                 <div>
-                    <h4 class="text-xl font-bold text-slate-800">Form Aduan & Aspirasi Warga</h4>
-                    <p class="text-xs text-slate-500">Terhubung langsung ke Layanan Aduan RT (08128077166)</p>
+                    <h4 class="text-xl font-bold text-slate-800">Form Aspirasi & Laporan Warga</h4>
+                    <p class="text-xs text-slate-500">Terhubung langsung ke Sekretariat RT (WA: 08128077166)</p>
                 </div>
             </div>
-            <form onsubmit="submitAspirasi(event)" class="space-y-3">
+
+            <form id="formAspirasi" onsubmit="submitAspirasi(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap Warga</label>
-                    <input type="text" id="namaWarga" placeholder="Nama Anda" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none" required>
+                    <input type="text" id="namaWarga" placeholder="Contoh: Pak Budi" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none text-sm" required>
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">No. Rumah / Blok</label>
-                    <input type="text" id="blokRumah" placeholder="Contoh: Blok A No. 12" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none" required>
+                    <input type="text" id="blokRumah" placeholder="Contoh: Blok A No. 12" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none text-sm" required>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Kategori Aduan / Laporan</label>
-                    <select id="kategoriLaporan" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none bg-white" required>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Kategori Laporan</label>
+                    <select id="kategoriLaporan" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none text-sm bg-white" required>
                         <option value="Saran & Aspirasi">Saran & Aspirasi Kemajuan RT</option>
                         <option value="Laporan Kebersihan">Laporan Kebersihan / Sampah</option>
                         <option value="Laporan Keamanan">Laporan Keamanan & Ketertiban</option>
-                        <option value="Fasilitas Lampu/Jalan">Laporan Kerusakan Lampu / Jalan / Fasos</option>
+                        <option value="Fasilitas Lampu/Jalan">Laporan Kerusakan Fasilitas / Lampu Jalan</option>
                         <option value="Lainnya">Lainnya</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Isi Aduan / Laporan</label>
-                    <textarea id="isiPesan" rows="3" placeholder="Tuliskan isi laporan Anda secara jelas..." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-amber-400 focus:outline-none" required></textarea>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Isi Aspirasi / Pesan Laporan</label>
+                    <textarea id="isiPesan" rows="3" placeholder="Tuliskan isi masukan atau laporan Anda secara jelas..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none text-sm" required></textarea>
                 </div>
-                <button type="submit" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-xl shadow transition-all flex items-center justify-center gap-2 text-sm mt-2">
-                    <i data-lucide="send" class="w-4 h-4"></i> Kirimkan Aduan via WhatsApp
+                <button type="submit" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-3 rounded-xl shadow transition-all flex items-center justify-center gap-2 text-sm">
+                    <i data-lucide="send" class="w-4 h-4"></i> Kirim Aspirasi via WhatsApp
                 </button>
             </form>
         </div>
@@ -380,18 +423,25 @@
     <!-- Modal Login Area Pengurus -->
     <div id="adminModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
-            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
             <div class="text-center mb-6">
-                <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-3"><i data-lucide="lock" class="w-6 h-6"></i></div>
+                <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="lock" class="w-6 h-6"></i>
+                </div>
                 <h4 class="text-xl font-bold text-slate-800">Akses Area Pengurus</h4>
-                <p class="text-xs text-slate-500 mt-1">Masukkan Kode PIN Pengurus untuk membuka Master Data Spreadsheet</p>
+                <p class="text-xs text-slate-500 mt-1">Masukkan Kode PIN Pengurus untuk membuka Master Data Spreadsheet Kas</p>
             </div>
             <form onsubmit="verifyAdmin(event)" class="space-y-4">
                 <div>
-                    <input type="password" id="adminPin" placeholder="Masukkan PIN" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-400 text-center font-mono text-lg tracking-widest" required>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Kode PIN Pengurus</label>
+                    <input type="password" id="adminPin" placeholder="Masukkan Kode PIN" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none text-center font-mono text-lg tracking-widest" required>
                     <p id="pinError" class="text-xs text-red-500 mt-1.5 hidden">Kode PIN salah! Silakan hubungi Sekretaris/Ketua RT.</p>
                 </div>
-                <button type="submit" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-xl shadow transition-all">Buka Master Data</button>
+                <button type="submit" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-xl shadow transition-all">
+                    Buka Spreadsheet Pengurus
+                </button>
             </form>
         </div>
     </div>
@@ -403,88 +453,105 @@
         </div>
     </footer>
 
-    <!-- Script & Logic Interaktif -->
+    <!-- Script & Fungsi Interaktif -->
     <script>
         lucide.createIcons();
 
         // Toggle Mobile Menu
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-        function closeMobileMenu() { mobileMenu.classList.add('hidden'); }
 
-        // Modal Keuangan Detail
-        function openKeuanganModal(tipe) {
-            document.getElementById('keuanganModal').classList.remove('hidden');
-            document.getElementById('contentUangMasuk').classList.add('hidden');
-            document.getElementById('contentUangKeluar').classList.add('hidden');
-            document.getElementById('contentSaldoTerkini').classList.add('hidden');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-            if(tipe === 'uang-masuk') document.getElementById('contentUangMasuk').classList.remove('hidden');
-            if(tipe === 'uang-keluar') document.getElementById('contentUangKeluar').classList.remove('hidden');
-            if(tipe === 'saldo-terkini') document.getElementById('contentSaldoTerkini').classList.remove('hidden');
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
         }
-        function closeKeuanganModal() { document.getElementById('keuanganModal').classList.add('hidden'); }
 
-        // Modal Sewa Fasilitas (WA: 6285111302077)
-        function openSewaModal(namaItem) {
-            document.getElementById('sewaItem').value = namaItem;
-            document.getElementById('sewaModal').classList.remove('hidden');
+        // Modal Pemesanan Fasilitas (WA: 6285111302077)
+        function openFasilitasModal(namaFasilitas) {
+            document.getElementById('fasilitasModal').classList.remove('hidden');
+            if (namaFasilitas) {
+                document.getElementById('jenisFasilitas').value = namaFasilitas;
+            }
         }
-        function closeSewaModal() { document.getElementById('sewaModal').classList.add('hidden'); }
 
-        function submitSewa(e) {
+        function closeFasilitasModal() {
+            document.getElementById('fasilitasModal').classList.add('hidden');
+        }
+
+        function submitFasilitas(e) {
             e.preventDefault();
-            const item = document.getElementById('sewaItem').value;
-            const nama = document.getElementById('sewaNama').value;
-            const blok = document.getElementById('sewaBlok').value;
-            const tgl = document.getElementById('sewaTanggal').value;
-            const cat = document.getElementById('sewaCatatan').value;
+            const nama = document.getElementById('namaPemesan').value;
+            const blok = document.getElementById('blokPemesan').value;
+            const barang = document.getElementById('jenisFasilitas').value;
+            const tgl = document.getElementById('tglPakai').value;
+            const jam = document.getElementById('jamPakai').value;
+            const catatan = document.getElementById('catatanFasilitas').value;
 
-            const noWA = "6285111302077"; // WA Pemesanan Fasilitas & SOR
-            const textWA = `Halo Pengelola Fasilitas RT 006, saya ingin memesan/menyewa:\n\n` +
-                           `📦 *Item:* ${item}\n` +
+            const noWA_Fasilitas = "6285111302077";
+
+            const textWA = `Halo Pengurus RT 006 (Fasum/Inventaris), saya mau mengajukan pemesanan/peminjaman fasilitas:\n\n` +
                            `👤 *Nama:* ${nama}\n` +
                            `🏠 *Rumah:* ${blok}\n` +
+                           `📦 *Fasilitas:* ${barang}\n` +
                            `📅 *Tanggal:* ${tgl}\n` +
-                           `📝 *Catatan/Jam:* ${cat}`;
+                           `⏰ *Jam/Durasi:* ${jam}\n` +
+                           `📝 *Catatan:* ${catatan || '-'}`;
 
-            window.open(`https://wa.me/${noWA}?text=${encodeURIComponent(textWA)}`, '_blank');
-            closeSewaModal();
+            window.open(`https://wa.me/${noWA_Fasilitas}?text=${encodeURIComponent(textWA)}`, '_blank');
+            closeFasilitasModal();
+            document.getElementById('formFasilitas').reset();
         }
 
-        // Modal Aduan Warga (WA: 628128077166)
-        function openAspirasiModal() { document.getElementById('aspirasiModal').classList.remove('hidden'); }
-        function closeAspirasiModal() { document.getElementById('aspirasiModal').classList.add('hidden'); }
+        // Modal Aspirasi Warga (WA: 628128077166)
+        function openAspirasiModal() {
+            document.getElementById('aspirasiModal').classList.remove('hidden');
+        }
+
+        function closeAspirasiModal() {
+            document.getElementById('aspirasiModal').classList.add('hidden');
+        }
 
         function submitAspirasi(e) {
             e.preventDefault();
             const nama = document.getElementById('namaWarga').value;
             const blok = document.getElementById('blokRumah').value;
-            const kat = document.getElementById('kategoriLaporan').value;
+            const kategori = document.getElementById('kategoriLaporan').value;
             const pesan = document.getElementById('isiPesan').value;
 
-            const noWA = "628128077166"; // WA Layanan Aduan Warga
-            const textWA = `Halo Pengurus RT 006, saya ingin menyampaikan aduan/aspirasi:\n\n` +
+            const noWA_Aspirasi = "628128077166";
+
+            const textWA = `Halo Pengurus RT 006, saya menyampaikan aspirasi/laporan via Portal Web:\n\n` +
                            `👤 *Nama:* ${nama}\n` +
                            `🏠 *Rumah:* ${blok}\n` +
-                           `📋 *Kategori:* ${kat}\n` +
-                           `💬 *Pesan Aduan:* ${pesan}`;
+                           `📋 *Kategori:* ${kategori}\n` +
+                           `💬 *Pesan:* ${pesan}`;
 
-            window.open(`https://wa.me/${noWA}?text=${encodeURIComponent(textWA)}`, '_blank');
+            window.open(`https://wa.me/${noWA_Aspirasi}?text=${encodeURIComponent(textWA)}`, '_blank');
             closeAspirasiModal();
+            document.getElementById('formAspirasi').reset();
         }
 
-        // Area Pengurus PIN
+        // Modal Akses Pengurus / Admin PIN
         const PIN_PENGURUS_RAHASIA = "006";
         const LINK_SPREADSHEET = "https://docs.google.com/spreadsheets/d/1zgfn-dXDM7a9rn-Niw6BFQbP5JLRJDUN4S5QkdM7_GI/edit";
 
-        function openAdminModal() { document.getElementById('adminModal').classList.remove('hidden'); }
-        function closeAdminModal() { document.getElementById('adminModal').classList.add('hidden'); }
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.remove('hidden');
+            document.getElementById('adminPin').value = '';
+            document.getElementById('pinError').classList.add('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
 
         function verifyAdmin(e) {
             e.preventDefault();
-            if (document.getElementById('adminPin').value === PIN_PENGURUS_RAHASIA) {
+            const inputPin = document.getElementById('adminPin').value;
+            if (inputPin === PIN_PENGURUS_RAHASIA) {
                 window.open(LINK_SPREADSHEET, '_blank');
                 closeAdminModal();
             } else {
