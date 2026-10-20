@@ -93,6 +93,9 @@
                 <button onclick="openFasilitasModal('Lapangan Olahraga')" class="bg-emerald-500 hover:bg-emerald-600 text-white px-5 py-2.5 rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm">
                     <i data-lucide="calendar" class="w-4 h-4"></i> Pesan Lapangan Olahraga
                 </button>
+                <button onclick="openFasilitasModal('Meja Lipat')" class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm">
+                    <i data-lucide="box" class="w-4 h-4"></i> Pesan Meja & Kursi
+                </button>
                 <button onclick="openAspirasiModal()" class="bg-amber-400 hover:bg-amber-500 text-slate-950 px-5 py-2.5 rounded-xl font-bold shadow-lg transition-all flex items-center gap-2 text-sm">
                     <i data-lucide="send" class="w-4 h-4"></i> Kirim Aspirasi / Laporan
                 </button>
@@ -255,14 +258,14 @@
                     </button>
                 </div>
 
-                <!-- 2. Meja Lipat -->
+                <!-- 2. Meja Lipat / Plastik -->
                 <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between">
                     <div>
                         <div class="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center mb-3">
                             <i data-lucide="table" class="w-5 h-5"></i>
                         </div>
-                        <h5 class="font-bold text-slate-800 text-base">Meja Lipat</h5>
-                        <p class="text-xs text-slate-500 mt-1">10 Unit (Kondisi Baik)</p>
+                        <h5 class="font-bold text-slate-800 text-base">Meja Plastik / Lipat</h5>
+                        <p class="text-xs text-slate-500 mt-1">4 Unit (Kondisi Baik)</p>
                     </div>
                     <button onclick="openFasilitasModal('Meja Lipat')" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-xs transition-all flex items-center justify-center gap-1">
                         <i data-lucide="box" class="w-3.5 h-3.5"></i> Pinjam Meja
@@ -276,7 +279,7 @@
                             <i data-lucide="armchair" class="w-5 h-5"></i>
                         </div>
                         <h5 class="font-bold text-slate-800 text-base">Kursi Plastik</h5>
-                        <p class="text-xs text-slate-500 mt-1">30 Unit (Siap Pakai)</p>
+                        <p class="text-xs text-slate-500 mt-1">50 Unit (Siap Pakai)</p>
                     </div>
                     <button onclick="openFasilitasModal('Kursi Plastik')" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-xl text-xs transition-all flex items-center justify-center gap-1">
                         <i data-lucide="box" class="w-3.5 h-3.5"></i> Pinjam Kursi
@@ -344,14 +347,20 @@
                     <label class="block text-xs font-bold text-slate-700 mb-1">No. Rumah / Blok</label>
                     <input type="text" id="blokPemesan" placeholder="Contoh: Blok C No. 5" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-400 focus:outline-none text-sm" required>
                 </div>
-                <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Fasilitas yang Dipesan</label>
-                    <select id="jenisFasilitas" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-400 focus:outline-none text-sm bg-white" required>
-                        <option value="Lapangan Olahraga">Lapangan Olahraga (Badminton/Voli)</option>
-                        <option value="Meja Lipat">Meja Lipat</option>
-                        <option value="Kursi Plastik">Kursi Plastik</option>
-                        <option value="Tenda & Tarup">Tenda & Tarup</option>
-                    </select>
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="col-span-2">
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Fasilitas yang Dipesan</label>
+                        <select id="jenisFasilitas" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-400 focus:outline-none text-sm bg-white" required>
+                            <option value="Lapangan Olahraga">Lapangan Olahraga (Badminton/Voli)</option>
+                            <option value="Meja Lipat">Meja Plastik / Lipat</option>
+                            <option value="Kursi Plastik">Kursi Plastik</option>
+                            <option value="Tenda & Tarup">Tenda & Tarup</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Jumlah (Qty)</label>
+                        <input type="number" id="jumlahFasilitas" min="1" value="1" placeholder="1" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-400 focus:outline-none text-sm" required>
+                    </div>
                 </div>
                 <div class="grid grid-cols-2 gap-3">
                     <div>
@@ -486,6 +495,7 @@
             const nama = document.getElementById('namaPemesan').value;
             const blok = document.getElementById('blokPemesan').value;
             const barang = document.getElementById('jenisFasilitas').value;
+            const jumlah = document.getElementById('jumlahFasilitas').value;
             const tgl = document.getElementById('tglPakai').value;
             const jam = document.getElementById('jamPakai').value;
             const catatan = document.getElementById('catatanFasilitas').value;
@@ -496,6 +506,7 @@
                            `👤 *Nama:* ${nama}\n` +
                            `🏠 *Rumah:* ${blok}\n` +
                            `📦 *Fasilitas:* ${barang}\n` +
+                           `🔢 *Jumlah:* ${jumlah} Unit/Set\n` +
                            `📅 *Tanggal:* ${tgl}\n` +
                            `⏰ *Jam/Durasi:* ${jam}\n` +
                            `📝 *Catatan:* ${catatan || '-'}`;
@@ -527,37 +538,4 @@
                            `👤 *Nama:* ${nama}\n` +
                            `🏠 *Rumah:* ${blok}\n` +
                            `📋 *Kategori:* ${kategori}\n` +
-                           `💬 *Pesan:* ${pesan}`;
-
-            window.open(`https://wa.me/${noWA_Aspirasi}?text=${encodeURIComponent(textWA)}`, '_blank');
-            closeAspirasiModal();
-            document.getElementById('formAspirasi').reset();
-        }
-
-        // Modal Akses Pengurus / Admin PIN
-        const PIN_PENGURUS_RAHASIA = "006";
-        const LINK_SPREADSHEET = "https://docs.google.com/spreadsheets/d/1zgfn-dXDM7a9rn-Niw6BFQbP5JLRJDUN4S5QkdM7_GI/edit";
-
-        function openAdminModal() {
-            document.getElementById('adminModal').classList.remove('hidden');
-            document.getElementById('adminPin').value = '';
-            document.getElementById('pinError').classList.add('hidden');
-        }
-
-        function closeAdminModal() {
-            document.getElementById('adminModal').classList.add('hidden');
-        }
-
-        function verifyAdmin(e) {
-            e.preventDefault();
-            const inputPin = document.getElementById('adminPin').value;
-            if (inputPin === PIN_PENGURUS_RAHASIA) {
-                window.open(LINK_SPREADSHEET, '_blank');
-                closeAdminModal();
-            } else {
-                document.getElementById('pinError').classList.remove('hidden');
-            }
-        }
-    </script>
-</body>
-</html>
+                           `💬 *Pesan:* ${
