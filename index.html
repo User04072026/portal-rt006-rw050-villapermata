@@ -26,190 +26,260 @@
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center space-x-1 text-sm font-medium">
-                <a href="#dashboard" class="nav-link px-3.5 py-2 rounded-lg hover:bg-blue-800/60 hover:text-white text-blue-100 transition-all flex items-center gap-2">
+            <div class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+                <a href="#dashboard" class="px-3 py-2 rounded-lg hover:bg-blue-800/60 text-blue-100 hover:text-white transition-all flex items-center gap-1.5">
                     <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard
                 </a>
-                <a href="#fasilitas" class="nav-link px-3.5 py-2 rounded-lg hover:bg-blue-800/60 hover:text-white text-blue-100 transition-all flex items-center gap-2">
-                    <i data-lucide="box" class="w-4 h-4"></i> Inventaris & Fasum
+                <a href="#inventaris" class="px-3 py-2 rounded-lg hover:bg-blue-800/60 text-blue-100 hover:text-white transition-all flex items-center gap-1.5">
+                    <i data-lucide="box" class="w-4 h-4"></i> Inventaris
                 </a>
-                <a href="#aspirasi" class="nav-link px-3.5 py-2 rounded-lg hover:bg-blue-800/60 hover:text-white text-blue-100 transition-all flex items-center gap-2">
+                <a href="#karang-taruna" class="px-3 py-2 rounded-lg hover:bg-blue-800/60 text-blue-100 hover:text-white transition-all flex items-center gap-1.5">
+                    <i data-lucide="users-round" class="w-4 h-4"></i> Karang Taruna
+                </a>
+                <a href="#aspirasi" class="px-3 py-2 rounded-lg hover:bg-blue-800/60 text-blue-100 hover:text-white transition-all flex items-center gap-1.5">
                     <i data-lucide="message-square" class="w-4 h-4"></i> Aspirasi Warga
                 </a>
-                <a href="https://docs.google.com/spreadsheets/d/1zgfn-dXDM7a9rn-Niw6BFQbP5JLRJDUN4S5QkdM7_GI/edit" target="_blank" rel="noopener noreferrer" class="ml-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 px-4 py-2 rounded-lg font-bold shadow-md hover:shadow-amber-500/20 transition-all flex items-center gap-2">
+                <button onclick="openAdminModal()" class="ml-2 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 px-4 py-2 rounded-lg font-bold shadow-md hover:shadow-amber-500/20 transition-all flex items-center gap-2">
                     <i data-lucide="shield-check" class="w-4 h-4"></i> Area Pengurus
-                </a>
+                </button>
             </div>
 
             <!-- Mobile Hamburger Button -->
-            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-blue-800 focus:outline-none" aria-label="Toggle Menu">
+            <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-blue-800 focus:outline-none">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </div>
 
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden border-t border-blue-800 bg-blue-900 px-4 pt-2 pb-4 space-y-2">
-            <a href="#dashboard" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-blue-800 text-blue-100 flex items-center gap-2">
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-blue-800 bg-blue-900 px-4 pt-2 pb-4 space-y-2">
+            <a href="#dashboard" class="mobile-link block px-3 py-2 rounded-lg hover:bg-blue-800 text-blue-100 flex items-center gap-2">
                 <i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard
             </a>
-            <a href="#fasilitas" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-blue-800 text-blue-100 flex items-center gap-2">
-                <i data-lucide="box" class="w-4 h-4"></i> Inventaris & Fasum
+            <a href="#inventaris" class="mobile-link block px-3 py-2 rounded-lg hover:bg-blue-800 text-blue-100 flex items-center gap-2">
+                <i data-lucide="box" class="w-4 h-4"></i> Inventaris
             </a>
-            <a href="#aspirasi" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-blue-800 text-blue-100 flex items-center gap-2">
+            <a href="#karang-taruna" class="mobile-link block px-3 py-2 rounded-lg hover:bg-blue-800 text-blue-100 flex items-center gap-2">
+                <i data-lucide="users-round" class="w-4 h-4"></i> Karang Taruna
+            </a>
+            <a href="#aspirasi" class="mobile-link block px-3 py-2 rounded-lg hover:bg-blue-800 text-blue-100 flex items-center gap-2">
                 <i data-lucide="message-square" class="w-4 h-4"></i> Aspirasi Warga
             </a>
-            <a href="https://docs.google.com/spreadsheets/d/1zgfn-dXDM7a9rn-Niw6BFQbP5JLRJDUN4S5QkdM7_GI/edit" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-400 hover:bg-amber-500 text-slate-950 px-4 py-2 rounded-lg font-bold mt-2 shadow">
-                Area Pengurus
-            </a>
+            <button onclick="openAdminModal()" class="w-full text-center bg-amber-400 hover:bg-amber-500 text-slate-950 px-4 py-2 rounded-lg font-bold mt-2 shadow flex items-center justify-center gap-2">
+                <i data-lucide="shield-check" class="w-4 h-4"></i> Area Pengurus
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Banner Baru -->
-    <header id="hero" class="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-950 text-white py-16 md:py-24">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+    <!-- Hero Banner -->
+    <header id="hero" class="relative overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-950 text-white py-14 md:py-20">
         <div class="container mx-auto px-4 relative z-10 text-center max-w-3xl">
-            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-200 border border-blue-400/30 mb-6 backdrop-blur-sm">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-200 border border-blue-400/30 mb-5 backdrop-blur-sm">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                 Sistem Informasi Digital RT 006
             </span>
             <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
                 Selamat Datang di Portal Warga <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 via-sky-300 to-amber-300">RT 006 Vila Permata</span>
             </h2>
-            <p class="mt-4 text-base md:text-lg text-blue-100/90 leading-relaxed font-normal">
-                Pusat layanan informasi digital transparan, modern, dan terintegrasi untuk kenyamanan seluruh warga RT 006 / RW 050.
+            <p class="mt-4 text-base md:text-lg text-blue-100/90 leading-relaxed">
+                Pusat informasi transparan, modern, dan terintegrasi untuk kenyamanan seluruh warga RT 006 / RW 050.
             </p>
-            <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <a href="#dashboard" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-blue-500/30 transition-all flex items-center gap-2">
-                    Lihat Dashboard <i data-lucide="arrow-down" class="w-4 h-4"></i>
-                </a>
-                <a href="#aspirasi" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-sm px-6 py-3 rounded-xl font-semibold transition-all">
-                    Sampaikan Aspirasi
-                </a>
-            </div>
         </div>
     </header>
 
-    <!-- Ringkasan Statistik (Dashboard Utama) -->
-    <section id="dashboard" class="container mx-auto my-12 px-4 scroll-mt-20">
+    <!-- Dashboard Statistik Utama -->
+    <section id="dashboard" class="container mx-auto my-10 px-4 scroll-mt-20">
         <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
             <div>
-                <h3 class="text-2xl font-bold text-slate-800">Dashboard Utama</h3>
-                <p class="text-sm text-slate-500">Ringkasan demografi warga dan status operasional lingkungan</p>
+                <h3 class="text-2xl font-bold text-slate-800">Ringkasan Lingkungan</h3>
+                <p class="text-sm text-slate-500">Statistik demografi, keuangan, dan aset RT 006</p>
             </div>
-            <span class="text-xs bg-slate-200 text-slate-600 px-3 py-1 rounded-full font-medium w-fit">Diperbarui Secara Real-time</span>
+            <span class="text-xs bg-slate-200 text-slate-600 px-3 py-1 rounded-full font-medium w-fit">Data Terverifikasi Pengurus</span>
         </div>
 
-        <!-- Metric Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-            <!-- Card 1 -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow relative overflow-hidden group">
-                <div class="flex items-center justify-between mb-3">
+        <!-- Metric Cards Grid (6 Kartu) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+            <!-- 1. Total Warga Terdata -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-2">
                     <span class="text-slate-500 text-sm font-medium">Total Warga Terdata</span>
-                    <div class="p-2.5 bg-blue-50 text-blue-600 rounded-xl group-hover:scale-110 transition-transform">
-                        <i data-lucide="users" class="w-5 h-5"></i>
-                    </div>
+                    <div class="p-2 bg-blue-50 text-blue-600 rounded-xl"><i data-lucide="users" class="w-5 h-5"></i></div>
                 </div>
                 <div class="flex items-baseline gap-2">
                     <p class="text-3xl font-extrabold text-slate-900">214</p>
-                    <span class="text-xs font-semibold text-emerald-600 flex items-center">
-                        <i data-lucide="trending-up" class="w-3 h-3 mr-0.5"></i> Terverifikasi
-                    </span>
+                    <span class="text-xs font-semibold text-emerald-600 flex items-center">Jiwa</span>
                 </div>
-                <p class="text-xs text-slate-400 mt-2">Mencakup Jiwa Tetap & Domisili</p>
+                <p class="text-xs text-slate-400 mt-2">Tetap & Domisili Terdata</p>
             </div>
 
-            <!-- Card 2 -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow relative overflow-hidden group">
-                <div class="flex items-center justify-between mb-3">
+            <!-- 2. Status Ngontrak/Sewa -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-2">
                     <span class="text-slate-500 text-sm font-medium">Status Ngontrak / Sewa</span>
-                    <div class="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl group-hover:scale-110 transition-transform">
-                        <i data-lucide="home" class="w-5 h-5"></i>
-                    </div>
+                    <div class="p-2 bg-emerald-50 text-emerald-600 rounded-xl"><i data-lucide="home" class="w-5 h-5"></i></div>
                 </div>
                 <div class="flex items-baseline gap-2">
                     <p class="text-3xl font-extrabold text-slate-900">14</p>
-                    <span class="text-xs font-semibold text-slate-500">KK Terdaftar</span>
+                    <span class="text-xs font-semibold text-slate-500">KK</span>
                 </div>
-                <p class="text-xs text-slate-400 mt-2">Tercatat di data admin RT</p>
+                <p class="text-xs text-slate-400 mt-2">Tercatat di data sekretariat</p>
             </div>
 
-            <!-- Card 3 -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow relative overflow-hidden group">
-                <div class="flex items-center justify-between mb-3">
-                    <span class="text-slate-500 text-sm font-medium">Program Kerja</span>
-                    <div class="p-2.5 bg-amber-50 text-amber-600 rounded-xl group-hover:scale-110 transition-transform">
-                        <i data-lucide="activity" class="w-5 h-5"></i>
-                    </div>
+            <!-- 3. Iuran Bulanan Warga (Baru) -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-500 text-sm font-medium">Iuran Bulanan Warga</span>
+                    <div class="p-2 bg-indigo-50 text-indigo-600 rounded-xl"><i data-lucide="wallet" class="w-5 h-5"></i></div>
                 </div>
                 <div class="flex items-baseline gap-2">
-                    <p class="text-2xl font-extrabold text-amber-600">Aktif</p>
+                    <p class="text-2xl font-extrabold text-indigo-600">Lunas 88%</p>
                 </div>
-                <p class="text-xs text-slate-400 mt-2">Agenda bulanan berjalan</p>
+                <p class="text-xs text-slate-400 mt-2">Rekapitulasi Periode Bulan Ini</p>
             </div>
 
-            <!-- Card 4 -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow relative overflow-hidden group">
-                <div class="flex items-center justify-between mb-3">
+            <!-- 4. Inventaris RT (Baru) -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-500 text-sm font-medium">Inventaris & Barang</span>
+                    <div class="p-2 bg-teal-50 text-teal-600 rounded-xl"><i data-lucide="package-check" class="w-5 h-5"></i></div>
+                </div>
+                <div class="flex items-baseline gap-2">
+                    <p class="text-3xl font-extrabold text-slate-900">42</p>
+                    <span class="text-xs font-semibold text-teal-600">Unit Terdata</span>
+                </div>
+                <p class="text-xs text-slate-400 mt-2">Siap dipinjam warga untuk acara</p>
+            </div>
+
+            <!-- 5. Program Kerja -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-slate-500 text-sm font-medium">Program Kerja</span>
+                    <div class="p-2 bg-amber-50 text-amber-600 rounded-xl"><i data-lucide="activity" class="w-5 h-5"></i></div>
+                </div>
+                <div class="flex items-baseline gap-2">
+                    <p class="text-2xl font-extrabold text-amber-600">Berjalan</p>
+                </div>
+                <p class="text-xs text-slate-400 mt-2">Kegiatan rutin & kebersihan</p>
+            </div>
+
+            <!-- 6. Keuangan RT -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md transition-shadow">
+                <div class="flex items-center justify-between mb-2">
                     <span class="text-slate-500 text-sm font-medium">Keuangan RT</span>
-                    <div class="p-2.5 bg-purple-50 text-purple-600 rounded-xl group-hover:scale-110 transition-transform">
-                        <i data-lucide="pie-chart" class="w-5 h-5"></i>
-                    </div>
+                    <div class="p-2 bg-purple-50 text-purple-600 rounded-xl"><i data-lucide="pie-chart" class="w-5 h-5"></i></div>
                 </div>
                 <div class="flex items-baseline gap-2">
                     <p class="text-2xl font-extrabold text-purple-600">Transparan</p>
                 </div>
-                <p class="text-xs text-slate-400 mt-2">Laporan kas terbuka untuk warga</p>
+                <p class="text-xs text-slate-400 mt-2">Laporan Kas Terbuka & Audited</p>
             </div>
         </div>
 
-        <!-- Embed Spreadsheet / Live Data Window -->
-        <div class="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-slate-200/80">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-slate-100 gap-2">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="sheet" class="w-5 h-5 text-emerald-600"></i>
-                    <h4 class="font-bold text-slate-800">Interactive Spreadsheet RT 006</h4>
-                </div>
-                <a href="https://docs.google.com/spreadsheets/d/1zgfn-dXDM7a9rn-Niw6BFQbP5JLRJDUN4S5QkdM7_GI/edit" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1">
-                    Buka Spreadsheet Penuh <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-                </a>
+        <!-- Pengumuman / Agenda Terbaru (Menggantikan Embed Spreadsheet) -->
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200/80">
+            <div class="flex items-center gap-2 mb-4 pb-3 border-b border-slate-100">
+                <i data-lucide="bell" class="w-5 h-5 text-blue-600"></i>
+                <h4 class="font-bold text-slate-800 text-lg">Informasi & Agenda Pengurus RT</h4>
             </div>
-            <div class="w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50">
-                <iframe class="w-full h-[550px] md:h-[650px] border-0" src="https://docs.google.com/spreadsheets/d/1zgfn-dXDM7a9rn-Niw6BFQbP5JLRJDUN4S5QkdM7_GI/htmlembed" loading="lazy"></iframe>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/60">
+                    <span class="text-xs font-bold text-blue-600 bg-blue-100 px-2.5 py-1 rounded-md">Kegiatan Rutin</span>
+                    <h5 class="font-bold text-slate-800 mt-2">Gotong Royong & Kerja Bakti Kebersihan</h5>
+                    <p class="text-xs text-slate-500 mt-1">Minggu Pertama Bulan Ini • Pukul 07.00 WIB - Selesai</p>
+                </div>
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/60">
+                    <span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-2.5 py-1 rounded-md">Informasi Iuran</span>
+                    <h5 class="font-bold text-slate-800 mt-2">Penarikan Iuran Bulanan Kebersihan & Keamanan</h5>
+                    <p class="text-xs text-slate-500 mt-1">Petugas RT akan berkunjung mulai tanggal 1 s/d 10 setiap bulan.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Section Dummy untuk Navigasi Fasilitas -->
-    <section id="fasilitas" class="container mx-auto my-12 px-4 scroll-mt-20">
-        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200/80">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="p-3 bg-blue-100 text-blue-700 rounded-xl">
-                    <i data-lucide="box" class="w-6 h-6"></i>
-                </div>
+    <!-- Section Inventaris & Fasum -->
+    <section id="inventaris" class="container mx-auto my-10 px-4 scroll-mt-20">
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200/80">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-3 bg-teal-100 text-teal-700 rounded-xl"><i data-lucide="box" class="w-6 h-6"></i></div>
                 <div>
-                    <h3 class="text-xl font-bold text-slate-800">Inventaris & Fasilitas Umum</h3>
-                    <p class="text-sm text-slate-500">Daftar barang inventaris RT dan sarana publik Vila Permata</p>
+                    <h3 class="text-xl font-bold text-slate-800">Inventaris & Peminjaman Fasilitas</h3>
+                    <p class="text-sm text-slate-500">Daftar sarana & prasarana yang dikelola RT 006</p>
                 </div>
             </div>
-            <p class="text-slate-600 text-sm">Bagian ini siap dihubungkan dengan data inventaris barang (tendal, kursi, genset, tenda) serta informasi peminjaman fasilitas umum.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                    <h5 class="font-bold text-slate-700">Tenda & Tarup</h5>
+                    <p class="text-sm text-slate-500 mt-1">2 Set (Kondisi Baik)</p>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                    <h5 class="font-bold text-slate-700">Kursi Plastik</h5>
+                    <p class="text-sm text-slate-500 mt-1">30 Unit (Siap Pakai)</p>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                    <h5 class="font-bold text-slate-700">Sound System & Wireless</h5>
+                    <p class="text-sm text-slate-500 mt-1">1 Set Portable</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Section Dummy untuk Navigasi Aspirasi -->
-    <section id="aspirasi" class="container mx-auto my-12 px-4 scroll-mt-20">
-        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200/80">
+    <!-- Section Karang Taruna -->
+    <section id="karang-taruna" class="container mx-auto my-10 px-4 scroll-mt-20">
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200/80">
             <div class="flex items-center gap-3 mb-4">
-                <div class="p-3 bg-amber-100 text-amber-700 rounded-xl">
-                    <i data-lucide="message-square" class="w-6 h-6"></i>
+                <div class="p-3 bg-blue-100 text-blue-700 rounded-xl"><i data-lucide="users-round" class="w-6 h-6"></i></div>
+                <div>
+                    <h3 class="text-xl font-bold text-slate-800">Karang Taruna RT 006</h3>
+                    <p class="text-sm text-slate-500">Wadah kegiatan pemuda & pemudi lingkungan Vila Permata</p>
                 </div>
+            </div>
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                Karang Taruna aktif mendukung berbagai kegiatan kemasyarakatan, olahraga, peringatan hari besar nasional (PHBN), serta kegiatan sosial warga RT 006.
+            </p>
+            <div class="inline-flex items-center gap-2 text-xs font-semibold text-blue-700 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200">
+                <i data-lucide="sparkles" class="w-4 h-4"></i> Kegiatan Olahraga & Kreativitas Pemuda
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Aspirasi -->
+    <section id="aspirasi" class="container mx-auto my-10 px-4 scroll-mt-20">
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200/80">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="p-3 bg-amber-100 text-amber-700 rounded-xl"><i data-lucide="message-square" class="w-6 h-6"></i></div>
                 <div>
                     <h3 class="text-xl font-bold text-slate-800">Aspirasi & Laporan Warga</h3>
-                    <p class="text-sm text-slate-500">Kirimkan masukan, kritik, atau laporan ke pengurus RT</p>
+                    <p class="text-sm text-slate-500">Kirimkan saran, masukan, atau laporan demi kemajuan RT 006</p>
                 </div>
             </div>
-            <p class="text-slate-600 text-sm">Bagian ini dapat dihubungkan ke Google Form aspirasi warga atau saluran kontak langsung pengurus RT.</p>
+            <p class="text-slate-600 text-sm">Untuk penyampaian laporan atau saran darurat, warga dapat menghubungi sekretariat RT 006 atau mengisi form komunikasi yang disediakan pengurus.</p>
         </div>
     </section>
+
+    <!-- Modal Login Area Pengurus -->
+    <div id="adminModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+            <button onclick="closeAdminModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="lock" class="w-6 h-6"></i>
+                </div>
+                <h4 class="text-xl font-bold text-slate-800">Akses Area Pengurus</h4>
+                <p class="text-xs text-slate-500 mt-1">Masukkan Kode PIN Pengurus untuk membuka Master Data Spreadsheet</p>
+            </div>
+            <form onsubmit="verifyAdmin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Kode PIN Pengurus</label>
+                    <input type="password" id="adminPin" placeholder="Masukkan Kode PIN" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-400 focus:outline-none text-center font-mono text-lg tracking-widest" required>
+                    <p id="pinError" class="text-xs text-red-500 mt-1.5 hidden">Kode PIN salah! Silakan hubungi Sekretaris/Ketua RT.</p>
+                </div>
+                <button type="submit" class="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 rounded-xl shadow transition-all">
+                    Buka Spreadsheet Pengurus
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
@@ -220,7 +290,6 @@
 
     <!-- Interaktivitas & Script -->
     <script>
-        // Inisialisasi Lucide Icons
         lucide.createIcons();
 
         // Toggle Mobile Menu
@@ -231,12 +300,36 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Close mobile menu saat menu diklik
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         });
+
+        // Modal Akses Pengurus / Admin PIN
+        const PIN_PENGURUS_RAHASIA = "006"; // Sesuaikan PIN rahasia Anda di sini
+        const LINK_SPREADSHEET = "https://docs.google.com/spreadsheets/d/1zgfn-dXDM7a9rn-Niw6BFQbP5JLRJDUN4S5QkdM7_GI/edit";
+
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.remove('hidden');
+            document.getElementById('adminPin').value = '';
+            document.getElementById('pinError').classList.add('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function verifyAdmin(e) {
+            e.preventDefault();
+            const inputPin = document.getElementById('adminPin').value;
+            if (inputPin === PIN_PENGURUS_RAHASIA) {
+                window.open(LINK_SPREADSHEET, '_blank');
+                closeAdminModal();
+            } else {
+                document.getElementById('pinError').classList.remove('hidden');
+            }
+        }
     </script>
 </body>
 </html>
