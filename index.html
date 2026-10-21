@@ -465,9 +465,10 @@
     </div>
 
     <!-- JAVASCRIPT LOGIC (SINKRONISASI & INTERAKSI) -->
+    <!-- JAVASCRIPT LOGIC (SINKRONISASI REAL-TIME & INTERAKSI WEB) -->
     <script>
-        // 1. URL SPREADSHEET (Sudah Dipublikasikan ke Web dalam Format CSV)
-        const SPREADSHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/1zgfn-dXDM7a9rn-Niw6BFQbP5JLRJDUN4SSQkdM7_GI/pub?output=csv";
+        // 1. Link CSV Publikasi Khusus Sheet Laporan Keuangan Anda
+        const SPREADSHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-ML7nAfcWoYOZGJAlJ_MIe9twIPZONoinVjyXXtDTg_e1s13gZNOWXMYI_QuDSZ7W45RFQhRF90Y-/pub?gid=628329725&single=true&output=csv";
 
         // Fungsi Format Angka ke Rupiah
         function formatRupiah(angka) {
@@ -478,31 +479,55 @@
             }).format(angka || 0);
         }
 
-        // Fungsi Membaca CSV dari Google Spreadsheet
+        // Fungsi Membaca & Sinkronisasi CSV Keuangan
         async function loadKeuanganSpreadsheet() {
             try {
                 const response = await fetch(SPREADSHEET_CSV_URL);
-                if (!response.ok) throw new Error("Gagal mengambil data CSV");
+                if (!response.ok) throw new Error("Gagal mengambil data dari Google Spreadsheet");
 
                 const csvText = await response.text();
-
-                // Memecah teks CSV menjadi Baris dan Kolom
+                // Memecah CSV menjadi baris & kolom
                 const rows = csvText.split('\n').map(row => row.split(','));
 
-                // Mengambil Nilai dari Baris 2 (Indeks 1) -> Kolom A, B, C
-                const totalMasuk = parseFloat(rows[1][0].replace(/[^0-9.-]+/g, "")) || 0;
-                const totalKeluar = parseFloat(rows[1][1].replace(/[^0-9.-]+/g, "")) || 0;
-                const saldoTerkini = parseFloat(rows[1][2].replace(/[^0-9.-]+/g, "")) || 0;
+                let totalMasuk = 0;
+                let totalKeluar = 0;
 
-                // Tampilkan Nilai ke Elemen HTML
-                if(document.getElementById('total-masuk')) document.getElementById('total-masuk').innerText = formatRupiah(totalMasuk);
-                if(document.getElementById('total-keluar')) document.getElementById('total-keluar').innerText = formatRupiah(totalKeluar);
-                if(document.getElementById('saldo-terkini')) document.getElementById('saldo-terkini').innerText = formatRupiah(saldoTerkini);
+                // Membaca isi sel secara otomatis untuk mencari Total Pemasukan & Pengeluaran
+                for (let i = 0; i < rows.length; i++) {
+                    for (let j = 0; j < rows[i].length; j++) {
+                        const cellText = rows[i][j] ? rows[i][j].trim().toLowerCase() : "";
+
+                        // Mencari frasa 'total pemasukan'
+                        if (cellText.includes("total pemasukan")) {
+                            const val = rows[i][j + 1] ? rows[i][j + 1].replace(/[^0-9.-]+/g, "") : "0";
+                            totalMasuk = parseFloat(val) || 0;
+                        }
+
+                        // Mencari frasa 'total pengeluaran'
+                        if (cellText.includes("total pengeluaran")) {
+                            const val = rows[i][j + 1] ? rows[i][j + 1].replace(/[^0-9.-]+/g, "") : "0";
+                            totalKeluar = parseFloat(val) || 0;
+                        }
+                    }
+                }
+
+                const saldoTerkini = totalMasuk - totalKeluar;
+
+                // Tampilkan hasil angka ke elemen HTML
+                if (document.getElementById('total-masuk')) {
+                    document.getElementById('total-masuk').innerText = formatRupiah(totalMasuk);
+                }
+                if (document.getElementById('total-keluar')) {
+                    document.getElementById('total-keluar').innerText = formatRupiah(totalKeluar);
+                }
+                if (document.getElementById('saldo-terkini')) {
+                    document.getElementById('saldo-terkini').innerText = formatRupiah(saldoTerkini);
+                }
             } catch (error) {
                 console.error('Gagal sinkronisasi data keuangan:', error);
-                if(document.getElementById('total-masuk')) document.getElementById('total-masuk').innerText = "Gagal memuat";
-                if(document.getElementById('total-keluar')) document.getElementById('total-keluar').innerText = "Gagal memuat";
-                if(document.getElementById('saldo-terkini')) document.getElementById('saldo-terkini').innerText = "Gagal memuat";
+                if (document.getElementById('total-masuk')) document.getElementById('total-masuk').innerText = "Gagal memuat";
+                if (document.getElementById('total-keluar')) document.getElementById('total-keluar').innerText = "Gagal memuat";
+                if (document.getElementById('saldo-terkini')) document.getElementById('saldo-terkini').innerText = "Gagal memuat";
             }
         }
 
@@ -519,7 +544,7 @@
             if (mobileMenu) mobileMenu.classList.add('hidden'); 
         }
 
-        // 3. Modal Pemesanan Fasilitas
+        // 3. Modal Pemesanan Fasilitas & Lapangan
         function openFasilitasModal(namaFasilitas) {
             document.getElementById('fasilitasModal').classList.remove('hidden');
             if (namaFasilitas) {
@@ -615,7 +640,7 @@
             }
         }
 
-        // 6. Event Listener - Jalankan Saat Halaman Selesai Dimuat
+        // 6. Jalankan Sinkronisasi Otomatis Saat Halaman Dimuat
         document.addEventListener("DOMContentLoaded", () => {
             loadKeuanganSpreadsheet();
             if (typeof lucide !== 'undefined') {
@@ -623,5 +648,3 @@
             }
         });
     </script>
-</body>
-</html>
