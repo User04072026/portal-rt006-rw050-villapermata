@@ -479,37 +479,67 @@
             }).format(angka || 0);
         }
 
-        // Fungsi Membaca & Sinkronisasi CSV Keuangan
+       // Fungsi Membaca & Sinkronisasi CSV Keuangan (Revisi Pencarian Fleksibel)
         async function loadKeuanganSpreadsheet() {
             try {
                 const response = await fetch(SPREADSHEET_CSV_URL);
-                if (!response.ok) throw new Error("Gagal mengambil data dari Google Spreadsheet");
+                if (!response.ok) throw new Error("Gagal mengambil data CSV");
 
                 const csvText = await response.text();
-                // Memecah CSV menjadi baris & kolom
                 const rows = csvText.split('\n').map(row => row.split(','));
 
                 let totalMasuk = 0;
                 let totalKeluar = 0;
 
-                // Membaca isi sel secara otomatis untuk mencari Total Pemasukan & Pengeluaran
+                // Memindai seluruh baris dan kolom CSV secara rinci
                 for (let i = 0; i < rows.length; i++) {
                     for (let j = 0; j < rows[i].length; j++) {
                         const cellText = rows[i][j] ? rows[i][j].trim().toLowerCase() : "";
 
-                        // Mencari frasa 'total pemasukan'
-                        if (cellText.includes("total pemasukan")) {
-                            const val = rows[i][j + 1] ? rows[i][j + 1].replace(/[^0-9.-]+/g, "") : "0";
-                            totalMasuk = parseFloat(val) || 0;
+                        // Mencari kata "uang masuk" atau "pemasukan"
+                        if (cellText.includes("uang masuk") || cellText.includes("pemasukan")) {
+                            for (let k = j + 1; k < rows[i].length; k++) {
+                                const valText = rows[i][k] ? rows[i][k].replace(/[^0-9]/g, "") : "";
+                                if (valText.length > 0) {
+                                    totalMasuk = parseFloat(valText) || 0;
+                                    break;
+                                }
+                            }
                         }
 
-                        // Mencari frasa 'total pengeluaran'
-                        if (cellText.includes("total pengeluaran")) {
-                            const val = rows[i][j + 1] ? rows[i][j + 1].replace(/[^0-9.-]+/g, "") : "0";
-                            totalKeluar = parseFloat(val) || 0;
+                        // Mencari kata "uang keluar" atau "pengeluaran"
+                        if (cellText.includes("uang keluar") || cellText.includes("pengeluaran")) {
+                            for (let k = j + 1; k < rows[i].length; k++) {
+                                const valText = rows[i][k] ? rows[i][k].replace(/[^0-9]/g, "") : "";
+                                if (valText.length > 0) {
+                                    totalKeluar = parseFloat(valText) || 0;
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
+
+                // Hitung Saldo Terkini
+                const saldoTerkini = totalMasuk - totalKeluar;
+
+                // Tampilkan angka ke elemen HTML Dashboard
+                if (document.getElementById('total-masuk')) {
+                    document.getElementById('total-masuk').innerText = formatRupiah(totalMasuk);
+                }
+                if (document.getElementById('total-keluar')) {
+                    document.getElementById('total-keluar').innerText = formatRupiah(totalKeluar);
+                }
+                if (document.getElementById('saldo-terkini')) {
+                    document.getElementById('saldo-terkini').innerText = formatRupiah(saldoTerkini);
+                }
+            } catch (error) {
+                console.error('Gagal sinkronisasi data keuangan:', error);
+                if (document.getElementById('total-masuk')) document.getElementById('total-masuk').innerText = "Gagal memuat";
+                if (document.getElementById('total-keluar')) document.getElementById('total-keluar').innerText = "Gagal memuat";
+                if (document.getElementById('saldo-terkini')) document.getElementById('saldo-terkini').innerText = "Gagal memuat";
+            }
+        }
 
                 const saldoTerkini = totalMasuk - totalKeluar;
 
