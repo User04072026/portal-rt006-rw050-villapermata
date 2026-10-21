@@ -464,11 +464,11 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIC (SINKRONISASI & INTERAKSI) -->
     <!-- JAVASCRIPT LOGIC (SINKRONISASI REAL-TIME & INTERAKSI WEB) -->
     <script>
-        // 1. Link CSV Publikasi Khusus Sheet Laporan Keuangan Anda
-        const SPREADSHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-ML7nAfcWoYOZGJAlJ_MIe9twIPZONoinVjyXXtDTg_e1s13gZNOWXMYI_QuDSZ7W45RFQhRF90Y-/pub?gid=628329725&single=true&output=csv";
+        // 1. Link CSV Publikasi Spreadsheet Sheet Keuangan dengan Proxy Anti-CORS
+        const RAW_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-ML7nAfcWoYOZGJAlJ_MIe9twIPZONoinVjyXXtDTg_e1s13gZNOWXMYI_QuDSZ7W45RFQhRF90Y-/pub?gid=628329725&single=true&output=csv";
+        const SPREADSHEET_CSV_URL = `https://api.allorigins.win/raw?url=${encodeURIComponent(RAW_CSV_URL)}`;
 
         // Fungsi Format Angka ke Rupiah
         function formatRupiah(angka) {
@@ -479,24 +479,25 @@
             }).format(angka || 0);
         }
 
-       // Fungsi Membaca & Sinkronisasi CSV Keuangan (Revisi Pencarian Fleksibel)
+        // Fungsi Membaca & Sinkronisasi CSV Keuangan (Smart Flexible Parser)
         async function loadKeuanganSpreadsheet() {
             try {
                 const response = await fetch(SPREADSHEET_CSV_URL);
                 if (!response.ok) throw new Error("Gagal mengambil data CSV");
 
                 const csvText = await response.text();
+                // Memecah CSV menjadi baris & kolom
                 const rows = csvText.split('\n').map(row => row.split(','));
 
                 let totalMasuk = 0;
                 let totalKeluar = 0;
 
-                // Memindai seluruh baris dan kolom CSV secara rinci
+                // Poin 1: Membaca Nilai dari Ringkasan Atas (Uang Masuk / Uang Keluar / Total)
                 for (let i = 0; i < rows.length; i++) {
                     for (let j = 0; j < rows[i].length; j++) {
                         const cellText = rows[i][j] ? rows[i][j].trim().toLowerCase() : "";
 
-                        // Mencari kata "uang masuk" atau "pemasukan"
+                        // Mencari frasa "uang masuk" / "pemasukan"
                         if (cellText.includes("uang masuk") || cellText.includes("pemasukan")) {
                             for (let k = j + 1; k < rows[i].length; k++) {
                                 const valText = rows[i][k] ? rows[i][k].replace(/[^0-9]/g, "") : "";
@@ -507,7 +508,7 @@
                             }
                         }
 
-                        // Mencari kata "uang keluar" atau "pengeluaran"
+                        // Mencari frasa "uang keluar" / "pengeluaran"
                         if (cellText.includes("uang keluar") || cellText.includes("pengeluaran")) {
                             for (let k = j + 1; k < rows[i].length; k++) {
                                 const valText = rows[i][k] ? rows[i][k].replace(/[^0-9]/g, "") : "";
@@ -520,30 +521,21 @@
                     }
                 }
 
-                // Hitung Saldo Terkini
-                const saldoTerkini = totalMasuk - totalKeluar;
-
-                // Tampilkan angka ke elemen HTML Dashboard
-                if (document.getElementById('total-masuk')) {
-                    document.getElementById('total-masuk').innerText = formatRupiah(totalMasuk);
+                // Poin 2: Jika Ringkasan Belum Ada, Hitung Otomatis dari Kolom Kas Masuk (Kolom E) dan Kas Keluar (Kolom F)
+                if (totalMasuk === 0 && totalKeluar === 0) {
+                    for (let i = 8; i < rows.length; i++) {
+                        if (rows[i] && rows[i].length >= 6) {
+                            const masukVal = rows[i][4] ? parseFloat(rows[i][4].replace(/[^0-9]/g, "")) || 0 : 0;
+                            const keluarVal = rows[i][5] ? parseFloat(rows[i][5].replace(/[^0-9]/g, "")) || 0 : 0;
+                            totalMasuk += masukVal;
+                            totalKeluar += keluarVal;
+                        }
+                    }
                 }
-                if (document.getElementById('total-keluar')) {
-                    document.getElementById('total-keluar').innerText = formatRupiah(totalKeluar);
-                }
-                if (document.getElementById('saldo-terkini')) {
-                    document.getElementById('saldo-terkini').innerText = formatRupiah(saldoTerkini);
-                }
-            } catch (error) {
-                console.error('Gagal sinkronisasi data keuangan:', error);
-                if (document.getElementById('total-masuk')) document.getElementById('total-masuk').innerText = "Gagal memuat";
-                if (document.getElementById('total-keluar')) document.getElementById('total-keluar').innerText = "Gagal memuat";
-                if (document.getElementById('saldo-terkini')) document.getElementById('saldo-terkini').innerText = "Gagal memuat";
-            }
-        }
 
                 const saldoTerkini = totalMasuk - totalKeluar;
 
-                // Tampilkan hasil angka ke elemen HTML
+                // Tampilkan nilai angka ke elemen HTML
                 if (document.getElementById('total-masuk')) {
                     document.getElementById('total-masuk').innerText = formatRupiah(totalMasuk);
                 }
@@ -646,7 +638,7 @@
             document.getElementById('formAspirasi').reset();
         }
 
-        // 5. Modal Area Pengurus (Login PIN)
+        // 5. Modal Area Pengurus (Login PIN & Link Master Spreadsheet)
         const PIN_PENGURUS_RAHASIA = "006";
         const LINK_SPREADSHEET = "https://docs.google.com/spreadsheets/d/1zgfn-dXDM7a9rn-Niw6BFQbP5JLRJDUN4S5QkdM7_GI/edit";
 
@@ -678,3 +670,5 @@
             }
         });
     </script>
+</body>
+</html>
