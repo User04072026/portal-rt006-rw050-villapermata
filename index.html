@@ -493,153 +493,129 @@
             const totalKeluar = parseFloat(rows[1][1].replace(/[^0-9.-]+/g,"")) || 0;
             const saldoTerkini = parseFloat(rows[1][2].replace(/[^0-9.-]+/g,"")) || 0;
 
-            document.getElementById('total-masuk').innerText = formatRupiah(totalMasuk);
-            document.getElementById('total-keluar').innerText = formatRupiah(totalKeluar);
-            document.getElementById('saldo-terkini').innerText = formatRupiah(saldoTerkini);
-        } catch (error) {
-            console.error('Gagal mengambil data:', error);
             document.getElementById('total-masuk').innerText = "Gagal memuat";
             document.getElementById('total-keluar').innerText = "Gagal memuat";
             document.getElementById('saldo-terkini').innerText = "Gagal memuat";
         }
     }
 
-    document.addEventListener('DOMContentLoaded', loadDataKeuangan);
-</script>
+    // Toggle Mobile Menu
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-        // 3. Menjalankan fungsi otomatis saat halaman dibuka
-        document.addEventListener("DOMContentLoaded", loadKeuanganSpreadsheet);
-        
-        // Toggle Mobile Menu
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
+    if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+    }
 
-        function closeMobileMenu() {
-            mobileMenu.classList.add('hidden');
-        }
+    function closeMobileMenu() {
+        if (mobileMenu) mobileMenu.classList.add('hidden');
+    }
 
-        // Modal Pemesanan Fasilitas (WA: 6285111302077)
-        function openFasilitasModal(namaFasilitas) {
-            document.getElementById('fasilitasModal').classList.remove('hidden');
-            if (namaFasilitas) {
-                document.getElementById('jenisFasilitas').value = namaFasilitas;
-            }
+    // Modal Pemesanan Fasilitas
+    function openFasilitasModal(namaFasilitas) {
+        document.getElementById('fasilitasModal').classList.remove('hidden');
+        if (namaFasilitas) {
+            document.getElementById('jenisFasilitas').value = namaFasilitas;
             updateJumlahMax();
         }
+    }
 
-        function closeFasilitasModal() {
-            document.getElementById('fasilitasModal').classList.add('hidden');
+    function closeFasilitasModal() {
+        document.getElementById('fasilitasModal').classList.add('hidden');
+    }
+
+    function updateJumlahMax() {
+        const barang = document.getElementById('jenisFasilitas').value;
+        const inputJumlah = document.getElementById('jumlahFasilitas');
+        const satuanText = document.getElementById('satuanText');
+
+        if (barang === "Meja Plastik") {
+            inputJumlah.max = 4; inputJumlah.value = 1; satuanText.innerText = "Unit";
+        } else if (barang === "Kursi Plastik") {
+            inputJumlah.max = 50; inputJumlah.value = 10; satuanText.innerText = "Unit";
+        } else if (barang === "Tenda & Tarup") {
+            inputJumlah.max = 2; inputJumlah.value = 1; satuanText.innerText = "Set";
+        } else if (barang === "Lapangan Olahraga") {
+            inputJumlah.max = 1; inputJumlah.value = 1; satuanText.innerText = "Sesi";
         }
+    }
 
-        // Logika Batas Maksimal Jumlah Sesuai Stok Barang
-        function updateJumlahMax() {
-            const barang = document.getElementById('jenisFasilitas').value;
-            const inputJumlah = document.getElementById('jumlahFasilitas');
-            const satuanText = document.getElementById('satuanText');
+    function submitFasilitas(e) {
+        e.preventDefault();
+        const nama = document.getElementById('namaPemesan').value;
+        const blok = document.getElementById('blokPemesan').value;
+        const barang = document.getElementById('jenisFasilitas').value;
+        const jumlah = document.getElementById('jumlahFasilitas').value;
+        const satuan = document.getElementById('satuanText').innerText;
+        const tgl = document.getElementById('tglPakai').value;
+        const jam = document.getElementById('jamPakai').value;
+        const catatan = document.getElementById('catatanFasilitas').value;
+        
+        const noWA = "6285111302077";
+        const textWA = `Halo Pengurus RT 006 (Fasum/Inventaris), saya mau mengajukan pemesanan/peminjaman fasilitas:\n\n👤 *Nama:* ${nama}\n🏠 *Rumah:* ${blok}\n📦 *Fasilitas:* ${barang}\n🔢 *Jumlah:* ${jumlah} ${satuan}\n📅 *Tanggal:* ${tgl}\n⏰ *Jam/Durasi:* ${jam}\n📝 *Catatan:* ${catatan || '-'}`;
+        
+        window.open(`https://wa.me/${noWA}?text=${encodeURIComponent(textWA)}`, '_blank');
+        closeFasilitasModal();
+        document.getElementById('formFasilitas').reset();
+    }
 
-            if (barang === "Meja Plastik") {
-                inputJumlah.max = 4;
-                inputJumlah.value = 1;
-                satuanText.innerText = "Unit";
-            } else if (barang === "Kursi Plastik") {
-                inputJumlah.max = 50;
-                inputJumlah.value = 10;
-                satuanText.innerText = "Unit";
-            } else if (barang === "Tenda & Tarup") {
-                inputJumlah.max = 2;
-                inputJumlah.value = 1;
-                satuanText.innerText = "Set";
-            } else if (barang === "Lapangan Olahraga") {
-                inputJumlah.max = 1;
-                inputJumlah.value = 1;
-                satuanText.innerText = "Sesi";
-            }
+    // Modal Aspirasi Warga
+    function openAspirasiModal() {
+        document.getElementById('aspirasiModal').classList.remove('hidden');
+    }
+
+    function closeAspirasiModal() {
+        document.getElementById('aspirasiModal').classList.add('hidden');
+    }
+
+    function submitAspirasi(e) {
+        e.preventDefault();
+        const nama = document.getElementById('namaWarga').value;
+        const blok = document.getElementById('blokRumah').value;
+        const kategori = document.getElementById('kategoriLaporan').value;
+        const pesan = document.getElementById('isiPesan').value;
+        
+        const noWA = "628128077166";
+        const textWA = `Halo Pengurus RT 006, saya menyampaikan aspirasi/laporan via Portal Web:\n\n👤 *Nama:* ${nama}\n🏠 *Rumah:* ${blok}\n📋 *Kategori:* ${kategori}\n💬 *Pesan:* ${pesan}`;
+        
+        window.open(`https://wa.me/${noWA}?text=${encodeURIComponent(textWA)}`, '_blank');
+        closeAspirasiModal();
+        document.getElementById('formAspirasi').reset();
+    }
+
+    // Modal Area Pengurus / Admin PIN
+    const PIN_PENGURUS_RAHASIA = "006";
+    const LINK_SPREADSHEET = "https://docs.google.com/spreadsheets/d/1zgfn-dXDM7a9rn-Niw6BFQbP5JLRJDUN4SSQkdM7_GI/edit";
+
+    function openAdminModal() {
+        document.getElementById('adminModal').classList.remove('hidden');
+    }
+
+    function closeAdminModal() {
+        document.getElementById('adminModal').classList.add('hidden');
+        document.getElementById('pinError').classList.add('hidden');
+    }
+
+    function verifyAdmin(e) {
+        e.preventDefault();
+        const inputPin = document.getElementById('adminPin').value;
+        if (inputPin === PIN_PENGURUS_RAHASIA) {
+            window.open(LINK_SPREADSHEET, '_blank');
+            closeAdminModal();
+        } else {
+            document.getElementById('pinError').classList.remove('hidden');
         }
+    }
 
-        function submitFasilitas(e) {
-            e.preventDefault();
-            const nama = document.getElementById('namaPemesan').value;
-            const blok = document.getElementById('blokPemesan').value;
-            const barang = document.getElementById('jenisFasilitas').value;
-            const jumlah = document.getElementById('jumlahFasilitas').value;
-            const satuan = document.getElementById('satuanText').innerText;
-            const tgl = document.getElementById('tglPakai').value;
-            const jam = document.getElementById('jamPakai').value;
-            const catatan = document.getElementById('catatanFasilitas').value;
-
-            const noWA_Fasilitas = "6285111302077";
-
-            const textWA = `Halo Pengurus RT 006 (Fasum/Inventaris), saya mau mengajukan pemesanan/peminjaman fasilitas:\n\n` +
-                           `👤 *Nama:* ${nama}\n` +
-                           `🏠 *Rumah:* ${blok}\n` +
-                           `📦 *Fasilitas:* ${barang}\n` +
-                           `🔢 *Jumlah:* ${jumlah} ${satuan}\n` +
-                           `📅 *Tanggal:* ${tgl}\n` +
-                           `⏰ *Jam/Durasi:* ${jam}\n` +
-                           `📝 *Catatan:* ${catatan || '-'}`;
-
-            window.open(`https://wa.me/${noWA_Fasilitas}?text=${encodeURIComponent(textWA)}`, '_blank');
-            closeFasilitasModal();
-            document.getElementById('formFasilitas').reset();
+    // Jalankan Sinkronisasi Keuangan Otomatis Saat Halaman Selesai Dimuat
+    document.addEventListener("DOMContentLoaded", () => {
+        loadKeuanganSpreadsheet();
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
         }
-
-        // Modal Aspirasi Warga (WA: 628128077166)
-        function openAspirasiModal() {
-            document.getElementById('aspirasiModal').classList.remove('hidden');
-        }
-
-        function closeAspirasiModal() {
-            document.getElementById('aspirasiModal').classList.add('hidden');
-        }
-
-        function submitAspirasi(e) {
-            e.preventDefault();
-            const nama = document.getElementById('namaWarga').value;
-            const blok = document.getElementById('blokRumah').value;
-            const kategori = document.getElementById('kategoriLaporan').value;
-            const pesan = document.getElementById('isiPesan').value;
-
-            const noWA_Aspirasi = "628128077166";
-
-            const textWA = `Halo Pengurus RT 006, saya menyampaikan aspirasi/laporan via Portal Web:\n\n` +
-                           `👤 *Nama:* ${nama}\n` +
-                           `🏠 *Rumah:* ${blok}\n` +
-                           `📋 *Kategori:* ${kategori}\n` +
-                           `💬 *Pesan:* ${pesan}`;
-
-            window.open(`https://wa.me/${noWA_Aspirasi}?text=${encodeURIComponent(textWA)}`, '_blank');
-            closeAspirasiModal();
-            document.getElementById('formAspirasi').reset();
-        }
-
-        // Modal Akses Pengurus / Admin PIN
-        const PIN_PENGURUS_RAHASIA = "006";
-        const LINK_SPREADSHEET = "https://docs.google.com/spreadsheets/d/1zgfn-dXDM7a9rn-Niw6BFQbP5JLRJDUN4S5QkdM7_GI/edit";
-
-        function openAdminModal() {
-            document.getElementById('adminModal').classList.remove('hidden');
-            document.getElementById('adminPin').value = '';
-            document.getElementById('pinError').classList.add('hidden');
-        }
-
-        function closeAdminModal() {
-            document.getElementById('adminModal').classList.add('hidden');
-        }
-
-        function verifyAdmin(e) {
-            e.preventDefault();
-            const inputPin = document.getElementById('adminPin').value;
-            if (inputPin === PIN_PENGURUS_RAHASIA) {
-                window.open(LINK_SPREADSHEET, '_blank');
-                closeAdminModal();
-            } else {
-                document.getElementById('pinError').classList.remove('hidden');
-            }
-        }
-    </script>
+    });
+</script> <!-- TAG PENUTUP HARUS ADA DI SINI (PALING BAWAH) -->
 </body>
 </html>
