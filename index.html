@@ -468,25 +468,44 @@
     <!-- Script & Fungsi Interaktif -->
     <script>
         lucide.createIcons();
-        const URL_SPREADSHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-ML7nAfcWoYOZGJAlJ_MIe9twIPZONoinVjyXXtDTg_e1s13gZNOWXMYI_QuDSZ7W45RFQhRF90Y-/pub?gid=628329725&single=true&output=csv";
-        async function loadKeuanganSpreadsheet() {
-            try {
-                const response = await fetch(URL_SPREADSHEET_CSV);
-                const dataText = await response.text();
-                
-                // Memisah baris CSV
-                const rows = dataText.split('\n').map(row => row.split(','));
+        const SPREADSHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1v.../pub?output=csv";
 
-                // Pembacaan posisi sel dari spreadsheet
-                if (rows.length > 1) {
-                    if (rows[0] && rows[0][1]) document.getElementById('valUangMasuk').innerText = rows[0][1].trim();
-                    if (rows[1] && rows[1][1]) document.getElementById('valUangKeluar').innerText = rows[1][1].trim();
-                    if (rows[2] && rows[2][1]) document.getElementById('valSaldoTerkini').innerText = rows[2][1].trim();
-                }
-            } catch (error) {
-                console.log("Menggunakan data cache default website.", error);
-            }
+    function formatRupiah(angka) {
+        return new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            maximumFractionDigits: 0
+        }).format(angka || 0);
+    }
+
+    async function loadDataKeuangan() {
+        try {
+            const response = await fetch(SPREADSHEET_CSV_URL);
+            const csvText = await response.text();
+
+            // Membaca baris dan kolom CSV
+            const rows = csvText.split('\n').map(row => row.split(','));
+            
+            // Misal: Total Masuk di baris ke-2 kolom A (rows[1][0]), 
+            // Total Keluar di baris ke-2 kolom B (rows[1][1]), 
+            // Saldo di baris ke-2 kolom C (rows[1][2])
+            const totalMasuk = parseFloat(rows[1][0].replace(/[^0-9.-]+/g,"")) || 0;
+            const totalKeluar = parseFloat(rows[1][1].replace(/[^0-9.-]+/g,"")) || 0;
+            const saldoTerkini = parseFloat(rows[1][2].replace(/[^0-9.-]+/g,"")) || 0;
+
+            document.getElementById('total-masuk').innerText = formatRupiah(totalMasuk);
+            document.getElementById('total-keluar').innerText = formatRupiah(totalKeluar);
+            document.getElementById('saldo-terkini').innerText = formatRupiah(saldoTerkini);
+        } catch (error) {
+            console.error('Gagal mengambil data:', error);
+            document.getElementById('total-masuk').innerText = "Gagal memuat";
+            document.getElementById('total-keluar').innerText = "Gagal memuat";
+            document.getElementById('saldo-terkini').innerText = "Gagal memuat";
         }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadDataKeuangan);
+</script>
 
         // 3. Menjalankan fungsi otomatis saat halaman dibuka
         document.addEventListener("DOMContentLoaded", loadKeuanganSpreadsheet);
