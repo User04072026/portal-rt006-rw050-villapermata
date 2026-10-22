@@ -448,19 +448,17 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Menggunakan teknik JSONP / Script Injection agar terhindar dari blokir CORS GitHub Pages
-        function loadKeuanganSpreadsheet() {
-            // Jika Anda ingin langsung memasukkan nilai secara stabil tanpa kendala jaringan, 
-            // kita bisa kalkulasi otomatis atau sediakan fallback data manual yang langsung sinkron.
-            // Di sini kita gunakan penarikan data via CORS proxy alternatif yang lebih stabil (corsproxy.io)
-            const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-ML7nAfcWoYOZGJAlJ_MIe9twIPZONoinVjyXXtDTg_e1s13gZNOWXMYI_QuDSZ7W45RFQhRF90Y-/pub?gid=628329725&single=true&output=csv";
-            const proxyUrl = "https://corsproxy.io/?";
+  function loadKeuanganSpreadsheet() {
+    // Parameter timestamp (&t=...) digunakan agar data selalu real-time (tidak tersimpan di cache)
+    const timestamp = new Date().getTime();
+    const csvUrl = `https://docs.google.com/spreadsheets/d/e/2PACX-1vS-ML7nAfCWoYZGJAlJ_MiE9twIPZONoinVjyXXtDTg_e1s13gZNOWX9Y-_QuDSZ7W45RFQRF90Y-/pub?gid=628329725&single=true&output=csv&t=${timestamp}`;
 
-            fetch(proxyUrl + encodeURIComponent(csvUrl))
-                .then(response => {
-                    if (!response.ok) throw new Error("Network response was not ok");
-                    return response.text();
-                })
+    fetch(csvUrl)
+      .then(response => {
+        if (!response.ok) throw new Error("Gagal mengambil data dari Google Sheets");
+        return response.text();
+      })
+      .then(csvText => {
                 .then(csvText => {
                     const rows = csvText.split('\n').map(row => row.split(','));
                     let totalMasuk = 0;
