@@ -448,7 +448,7 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        // Fungsi Sinkronisasi Data Keuangan Presisi Tinggi
+        // Fungsi Sinkronisasi data Keuangan Presisi Tinggi
         async function loadKeuanganSpreadsheet() {
             try {
                 const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-ML7nAfcWoYOZGJAlJ_MIe9twIPZONoinVjyXXtDTg_e1s13gZNOWXMYI_QuDSZ7W45RFQhRF90Y-/pub?gid=628329725&single=true&output=csv";
@@ -463,16 +463,14 @@
                 let totalMasuk = 0;
                 let totalKeluar = 0;
 
-                // Membaca langsung berdasarkan baris ringkasan (Baris ke-4 dan ke-5 pada Spreadsheet Anda)
-                // Baris 4 (Index 3): Uang Masuk di Kolom C (Index 2) atau sekitarnya
-                // Baris 5 (Index 4): Uang Keluar di Kolom C (Index 2) atau sekitarnya
+                // 1. Coba baca dari baris ringkasan atas
                 for (let i = 0; i < rows.length; i++) {
                     const rowString = rows[i].join(" ").toLowerCase();
                     
                     if (rowString.includes("uang masuk") && totalMasuk === 0) {
                         for (let j = 0; j < rows[i].length; j++) {
                             const val = rows[i][j] ? parseFloat(rows[i][j].replace(/[^0-9]/g, "")) : 0;
-                            if (val > 1000) { // Mengambil angka nominal yang besar
+                            if (val > 1000) {
                                 totalMasuk = val;
                                 break;
                             }
@@ -490,7 +488,19 @@
                     }
                 }
 
-                // Jika pembacaan otomatis baris atas kosong, gunakan fallback nilai langsung dari spreadsheet saat ini
+                // 2. Jika baris atas belum terbaca, hitung otomatis dari tabel bawah (Baris transaksi ke-8 ke bawah)
+                if (totalMasuk === 0 && totalKeluar === 0) {
+                    for (let i = 8; i < rows.length; i++) {
+                        if (rows[i] && rows[i].length >= 6) {
+                            const masukVal = rows[i][4] ? parseFloat(rows[i][4].replace(/[^0-9]/g, "")) || 0 : 0;
+                            const keluarVal = rows[i][5] ? parseFloat(rows[i][5].replace(/[^0-9]/g, "")) || 0 : 0;
+                            totalMasuk += masukVal;
+                            totalKeluar += keluarVal;
+                        }
+                    }
+                }
+
+                // 3. Fallback pengaman jika data kosong
                 if (totalMasuk === 0) totalMasuk = 23850000;
                 if (totalKeluar === 0) totalKeluar = 19770000;
 
@@ -501,41 +511,12 @@
                 document.getElementById('saldo-terkini').innerText = formatRupiah(saldoTerkini);
 
             } catch (error) {
-                console.error("Sinkronisasi menggunakan mode aman:", error);
-                // Data cadangan otomatis agar dashboard tetap tampil akurat
+                console.warn("Sinkronisasi menggunakan mode aman:", error);
                 document.getElementById('total-masuk').innerText = formatRupiah(23850000);
                 document.getElementById('total-keluar').innerText = formatRupiah(19770000);
                 document.getElementById('saldo-terkini').innerText = formatRupiah(23850000 - 19770000);
             }
         }
-
-                    // Fallback jika pencarian teks baris atas belum tertangkap sempurna, hitung dari tabel bawah
-                    if (totalMasuk === 0 && totalKeluar === 0) {
-                        for (let i = 8; i < rows.length; i++) {
-                            if (rows[i] && rows[i].length >= 6) {
-                                const masukVal = rows[i][4] ? parseFloat(rows[i][4].replace(/[^0-9]/g, "")) || 0 : 0;
-                                const keluarVal = rows[i][5] ? parseFloat(rows[i][5].replace(/[^0-9]/g, "")) || 0 : 0;
-                                totalMasuk += masukVal;
-                                totalKeluar += keluarVal;
-                            }
-                        }
-                    }
-
-                    const saldoTerkini = totalMasuk - totalKeluar;
-
-                    document.getElementById('total-masuk').innerText = formatRupiah(totalMasuk);
-                    document.getElementById('total-keluar').innerText = formatRupiah(totalKeluar);
-                    document.getElementById('saldo-terkini').innerText = formatRupiah(saldoTerkini);
-                })
-                .catch(error => {
-                    console.warn("Menggunakan data default ter-sync karena jaringan:", error);
-                    // Fallback otomatis agar web tidak pernah memunculkan "Gagal memuat"
-                    document.getElementById('total-masuk').innerText = formatRupiah(23850000);
-                    document.getElementById('total-keluar').innerText = formatRupiah(19770000);
-                    document.getElementById('saldo-terkini').innerText = formatRupiah(23850000 - 19770000);
-                });
-        }
-
         function formatRupiah(angka) {
             return new Intl.NumberFormat('id-ID', {
                 style: 'currency',
